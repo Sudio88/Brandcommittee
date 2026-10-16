@@ -5,7 +5,7 @@ Bibliographic notes. Only The 22 Immutable Laws of Marketing (via S001) and The 
 ## Joint work (Ries and Trout)
 
 ### Positioning: The Battle for Your Mind (1981; 20th anniversary edition 2001)
-- **Origin:** It grew out of their 1972 Advertising Age article series, "The Positioning Era" (via search summary, S006, S013). Ries credits Trout with suggesting the word "position" (via search summary, S007).
+- **Origin:** It grew out of a series of Advertising Age articles they published in 1972 (via search summary, S006, S013); the series title, "The Positioning Era", is [K]. Ries credits Trout with suggesting the word "position" (via search summary, S007).
 - **Core thesis [K]:** In an over-communicated society, the mind accepts only what fits what it already holds. Positioning is what you do to the mind of the prospect, not to the product. Get in first, or relate yourself to the leader's position (Avis, 7-Up). Reposition the competition. Choose names carefully, and avoid initials and line extension.
 - **Frameworks here:** #1, #3, #9, #16.
 
@@ -50,7 +50,7 @@ Bibliographic notes. Only The 22 Immutable Laws of Marketing (via S001) and The 
 ### The New Positioning (with Steve Rivkin, 1995) [K]
 - An update of positioning for the 1990s, with more on the mind's limits and repositioning.
 
-### Differentiate or Die (with Steve Rivkin, 2000; 2nd ed. 2008/2010) [K]
+### Differentiate or Die (with Steve Rivkin, 2000; 2nd ed. Wiley 2010, via search summary, S027) [K]
 - In a world of choice, every brand needs a real difference. Quality, customer orientation, creativity and price are not usually differentiators. Real differentiators include being first, owning an attribute, leadership, heritage, specialisation, preference and "newer generation". Library records: S026, S027.
 
 ### Big Brands, Big Trouble (2001), Trout on Strategy (2004), In Search of the Obvious (2008), Repositioning (2009) [K]

@@ -23,7 +23,7 @@
 ### 3. Very good is average; safe is risky
 - **What it is:** In a crowded market, competent and inoffensive is the riskiest position because it is invisible.
 - **Parts:** "The riskiest thing you can do now is be safe." (S001) Mediocre simply means average (S003). Grinding out "very good" does not produce a leap (S069).
-- **When to use:** When a team defends a me-too product as "good quality" or "safe for the mass market".
+- **When to use:** When a team defends a me-too product as "good quality" or safe for the mass market.
 - **How to score:** Name the edge. If you cannot say what is different and who will care, you have chosen the middle.
 - **Quote:** "Very good is boring. Very good is average." (S001)
 - **Sources:** 3 (S001, S003, S069)
@@ -43,7 +43,7 @@
 - **Parts:** Who's it for (a specific person with a worldview); what's it for (the change you seek to cause); would they miss it if you did not build it (S063).
 - **When to use:** Briefing designers, agencies, KOLs; approving a product.
 - **How to score:** If the team gives different answers, stop and align before anything is produced.
-- **Quote:** "Who’s it for? What’s it for? If you can be really clear about what the work is for, then hire someone you trust and give them the freedom to find a way to cause that change to happen." (S033)
+- **Quote:** "Who's it for? What's it for? If you can be really clear about what the work is for, then hire someone you trust and give them the freedom to find a way to cause that change to happen." (S033)
 - **Sources:** 3 (S003, S033, S063)
 
 ### 6. Four strategic choices *(This Is Strategy, 2024)*
@@ -64,11 +64,11 @@
 
 ### 8. Status roles
 - **What it is:** People define themselves relatively, so purchases and recommendations move status up or down.
-- **Parts:** Status is relative (S035); people talk about products when telling raises their standing (S003); adoption is about what the others do (S007).
+- **Parts:** Status is relative (S070); people talk about products when telling raises their standing (S003); adoption is about what the others do (S007).
 - **When to use:** Premium lines, gifting, licensed character goods, referral design.
 - **How to score:** Does owning, showing or recommending this raise the user's status with the people they care about?
-- **Quote:** "We define ourselves in relative terms, not absolute ones." (S035)
-- **Sources:** 3 (S003, S007, S035)
+- **Quote:** "We define ourselves in relative terms, not absolute ones." (S070)
+- **Sources:** 3 (S003, S007, S070)
 
 ## Permission and brand
 

@@ -1,6 +1,6 @@
 # Sources: Al Ries and Jack Trout
 
-Build date 2026-10-16. Two tables. **Table A** lists the sources that were actually fetched and read in full. Every verbatim quote in this brain comes from Table A, and from S001 or S003 only. **Table B** lists sources that were located by web search but could not be fetched, because this build environment's egress proxy refused every host except github.com and raw.githubusercontent.com (ries.com, adage.com, forbes.com, wikipedia.org, archive.org and the rest all returned connect_rejected). No quote is drawn from Table B. Where a Table B fact appears in the brain it is tagged "(via search summary)". Treat it as unverified until someone fetches the page.
+Build date 2026-10-16. Two tables. **Table A** lists the sources that were actually fetched and read in full. Every verbatim quote in this brain comes from Table A, and from S001, S002 or S003 only (S002 is used once, for the publisher blurb). **Table B** lists sources that were located by web search but could not be fetched, because this build environment's egress proxy refused every host except github.com and raw.githubusercontent.com (ries.com, adage.com, forbes.com, wikipedia.org, archive.org and the rest all returned connect_rejected). No quote is drawn from Table B. Where a Table B fact appears in the brain it is tagged "(via search summary)". Treat it as unverified until someone fetches the page.
 
 Content tags used across the brain:
 - **[F]**: backed by a fetched source in Table A, with a quote or a direct reading.

@@ -1,10 +1,10 @@
 # Ries and Trout seat: hot sheet
 
-> **Not Al Ries or Jack Trout; a simulation built from their public work.** One shared seat for two authors. They wrote together from 1972 until their partnership split in the mid 1990s; Ries then worked with his daughter Laura Ries, and Trout with Trout & Partners. Trout died in 2017 and Ries in 2022 (via search summary, S014, S015).
+> **Not Al Ries or Jack Trout; a simulation built from their public work.** One shared seat for two authors. They introduced positioning in a 1972 Advertising Age series (via search summary, S006) and wrote together until their partnership split in the 1990s [K]; Ries then worked with his daughter Laura Ries (Ries & Ries) and Trout with Trout & Partners (via search summary, S010, S029). Trout died in 2017 and Ries in 2022 (via search summary, S014, S015).
 
 **Pillar:** Positioning and category. **Question this seat owns:** Which word do we own in the buyer's mind, and which battle are we choosing?
 
-Built from a thin, partly secondary base: one near-verbatim transcription of The 22 Immutable Laws of Marketing (S001), one summary of The 22 Immutable Laws of Branding (S003), plus the books as widely known, tagged [K] and never quoted. See `sources.md` for the fetch limits. Quotes are verbatim from S001 or S003.
+Built from a thin, partly secondary base: one near-verbatim transcription of The 22 Immutable Laws of Marketing (S001), one summary of The 22 Immutable Laws of Branding (S003), plus the books as widely known, tagged [K] and never quoted. See `sources.md` for the fetch limits. Quotes are verbatim from S001, S002 or S003.
 
 ## Worldview
 

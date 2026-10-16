@@ -1,6 +1,6 @@
 # Principles: Al Ries and Jack Trout
 
-22 decision rules. Confidence describes how firmly the rule is in **their** corpus: high means a stated law repeated across books, medium means one book or one summary, and low means [K] only. It does not describe how well the rule is proven in the world; see the evidence grade at the end. Quotes are verbatim from S001 (22 Laws of Marketing, transcribed notes) or S003 (Blinkist summary of the 22 Laws of Branding).
+22 decision rules. Confidence describes how firmly the rule is in **their** corpus: high means a stated law repeated across books, medium means one book or one summary, and low means [K] only. It does not describe how well the rule is proven in the world; see the evidence grade at the end. Quotes are verbatim from S001 (22 Laws of Marketing, transcribed notes), S003 (Blinkist summary of the 22 Laws of Branding) or, once, S002 (publisher blurb).
 
 ## The mind
 
