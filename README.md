@@ -84,7 +84,9 @@ More ways to run it:
 
 ## Optional: let the room run councils itself
 
-Copy `.env.example` to `.env` in the room folder, add an `ANTHROPIC_API_KEY`, set `COUNCIL_RUNNER=api`, and restart `npm start`. That mode bills your Anthropic API account. In API mode the seats cannot read the vault, so house seats argue from their brains and the brief only.
+Copy `.env.example` to `.env` in the room folder, add an `ANTHROPIC_API_KEY`, set `COUNCIL_RUNNER=api`, and restart `npm start`. The room then shows a question box: type the decision, pick Full or Quick, and click **Convene the council**. That mode bills your Anthropic API account (roughly 25 to 30 calls per full council), not your Claude plan.
+
+In API mode the seats cannot open files, so the room loads the vault for them: each house seat gets Quick-Context, Margin-and-Discount-Ceilings, the team protocol, the six newest meeting notes and its own `MEMORY.md` (refreshed every 10 minutes), and the Chair builds the brief from the same notes. Seats cannot run data scripts in this mode, and the learning loop (memory lines, decision note) only runs in Claude Code.
 
 ## What's inside
 

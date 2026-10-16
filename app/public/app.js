@@ -139,7 +139,9 @@ function layoutStage() {
   const W = stage.clientWidth;
   const narrow = matchMedia("(max-width: 820px)").matches;
   const H = narrow ? Math.round(W * 0.62) : stage.clientHeight;
-  const cx = W / 2, cy = H * (narrow ? 0.98 : 0.9), rx = W * 0.48, ry = H * (narrow ? 0.46 : 0.42);
+  // the question box needs room: raise the table and shrink the busts while it shows
+  const composing = !narrow && !$("#composer").hidden;
+  const cx = W / 2, cy = H * (narrow ? 0.98 : composing ? 0.66 : 0.9), rx = W * 0.48, ry = H * (narrow ? 0.46 : composing ? 0.34 : 0.42);
   const t = $("#table");
   Object.assign(t.style, { left: `${cx - rx}px`, top: `${cy - ry}px`, width: `${rx * 2}px`, height: `${ry * 2}px` });
   const edge = (x) => cy - ry * Math.sqrt(Math.max(0, 1 - ((x - cx) / rx) ** 2));
@@ -147,7 +149,7 @@ function layoutStage() {
   const table = state.table && state.table.length ? state.table : state.seats.map((s) => s.key);
   const at = state.seats.filter((s) => table.includes(s.key));
   const n = Math.max(at.length, 2);
-  const shrink = Math.min(1, Math.pow(7 / n, 0.85));
+  const shrink = Math.min(1, Math.pow(7 / n, 0.85)) * (composing ? 0.82 : 1);
   stage.classList.toggle("crowded", n > 7);
   for (const s of state.seats) {
     const on = table.includes(s.key);
@@ -271,6 +273,7 @@ function reset() {
   $("#topic").hidden = true;
   $("#composer").hidden = state.runner !== "api";
   $("#waiting").hidden = state.runner === "api";
+  layoutStage();
   $("#caption").hidden = true;
   $("#cruxes").hidden = true;
   $("#plate").hidden = true;
@@ -293,6 +296,7 @@ function begin(id) {
   reset();
   state.session = id;
   $("#composer").hidden = true;
+  layoutStage();
   $("#waiting").hidden = true;
   $("#newBtn").hidden = false;
   $("#playbar").hidden = false;

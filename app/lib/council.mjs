@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { SEATS, byKey, systemFor, parseCard, checkQuotes } from "./seats.mjs";
+import { SEATS, byKey, systemFor, parseCard, checkQuotes, vaultSnapshot } from "./seats.mjs";
 import * as ai from "./anthropic.mjs";
 import { S } from "./anthropic.mjs";
 import { SESSIONS_DIR } from "./env.mjs";
@@ -197,12 +197,12 @@ async function chairSetup(st) {
     prompt: `The Moonshot team brought this to the council:
 
 """${st.prompt}"""
-
+${(() => { const v = vaultSnapshot(); return v ? `\nThe vault notes below are the team's own numbers and decisions. Use them to fill the brief (cite the note name), the newest dated meeting wins, and never put salaries of named people, health or ID numbers in the brief.${v}\n` : ""; })()}
 Set up the room.
 - title: the decision in 3 to 7 words.
 - decision: one line.
 - options: 2 to 4 options with ids A, B, C (D only if truly needed). Always include "don't do it" or "keep doing what you do now", and the obvious smaller version if the team brought one big idea.
-- brief: under 200 words covering the business, resources, what success looks like, and the team's lean, using only what the team said. Do not invent facts.
+- brief: under 200 words covering the business, resources, what success looks like, and the team's lean, using only what the team said and the vault notes given here. Do not invent facts.
 - assumptions: any number or fact you had to assume to make the brief usable, each one line. Keep it to what matters.
 - weights: one entry for every seat, weight 1 to 3 (3 = the decision lives in this pillar, 2 = materially affected, 1 = touched at the edges). Exactly one or two seats at 3. Reason in one line.
 - guest_seats: the two guest seats whose doctrine bears most on this decision (Hormozi for offers and pricing; Levinson when cash is scarce; Godin for launches and audience; Sharp for media, reach and availability; Ries & Trout for positioning, naming and new SKUs; Sutherland when the brief assumes a product or price change).\n- quick_seats: the four seats for a quick council: the two highest-weight seats, Sales or Promo as the contribution check (whichever is not already in), and the seat most likely to disagree with the others.`,

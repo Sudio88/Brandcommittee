@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { AGENTS_DIR, BRAINS_DIR } from "./env.mjs";
+import { AGENTS_DIR, BRAINS_DIR, REPO_ROOT } from "./env.mjs";
 
 // group "house": Moonshot Studio's own expert team (the vault's moonshot-* agents, given a seat).
 // group "guest": simulated advisors built from public work, invited when their doctrine bears on the call.
@@ -23,21 +23,56 @@ export const byKey = Object.fromEntries(SEATS.map((s) => [s.key, s]));
 const read = (p) => (fs.existsSync(p) ? fs.readFileSync(p, "utf8") : "");
 const stripFront = (t) => t.replace(/^---[\s\S]*?\n---\n/, "");
 
+// ---------- the live vault, inlined for the API runner (no file tools there) ----------
+const clip = (t, n) => (t.length > n ? t.slice(0, n) + "\n[...truncated]" : t);
+/** Newest meeting notes in 10-Meetings, newest first by filename date. */
+function newestMeetings(n) {
+  const dir = path.join(REPO_ROOT, "10-Meetings");
+  if (!fs.existsSync(dir)) return [];
+  const all = [];
+  const walk = (d) => { for (const e of fs.readdirSync(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) walk(p); else if (e.name.endsWith(".md")) all.push(p); } };
+  walk(dir);
+  const date = (p) => (path.basename(p).match(/\d{4}-\d{2}-\d{2}/) || ["0000"])[0];
+  return all.sort((a, b) => (date(a) < date(b) ? 1 : -1)).slice(0, n);
+}
+/** The shared vault snapshot: Quick-Context, ceilings, protocol and the newest meetings. Empty outside the vault. */
+export function vaultSnapshot() {
+  const qc = read(path.join(REPO_ROOT, "_Hub", "Quick-Context.md"));
+  if (!qc) return "";
+  const parts = [
+    ["_Hub/Quick-Context.md", clip(qc, 40000)],
+    ["03-Resources/Marketplace-Intelligence/Margin-and-Discount-Ceilings.md", clip(read(path.join(REPO_ROOT, "03-Resources", "Marketplace-Intelligence", "Margin-and-Discount-Ceilings.md")), 20000)],
+    [".claude/TEAM-PROTOCOL.md", read(path.join(REPO_ROOT, ".claude", "TEAM-PROTOCOL.md"))],
+    ...newestMeetings(6).map((p) => [path.relative(REPO_ROOT, p), clip(read(p), 6000)]),
+  ];
+  return parts.filter(([, t]) => t).map(([n, t]) => `\n\n===== vault: ${n} =====\n${t}`).join("");
+}
+
 const systemCache = new Map();
-/** The seat's agent instructions plus its brain, loaded inline (the API has no file tools). */
+const CACHE_MS = 10 * 60 * 1000; // pick up vault edits without restarting the room
+/** The seat's agent instructions plus its brain (and, for house seats in the vault, the live vault), loaded inline. */
 export function systemFor(key) {
-  if (systemCache.has(key)) return systemCache.get(key);
+  const hit = systemCache.get(key);
+  if (hit && Date.now() - hit.at < CACHE_MS) return hit.system;
   const s = byKey[key];
   const agent = stripFront(read(path.join(AGENTS_DIR, `council-${key}.md`))) + (s.agent ? "\n\n## Your team role (from the vault)\n" + stripFront(read(path.join(AGENTS_DIR, `${s.agent}.md`))) : "");
   const brain = ["_hot.md", "frameworks.md", "positions.md", "principles.md", "voice.md"]
     .map((f) => `\n\n===== brains/${s.slug}/${f} =====\n` + read(path.join(BRAINS_DIR, s.slug, f)))
     .join("");
+  let vault = "";
+  if (s.group === "house") {
+    const snap = vaultSnapshot();
+    const memory = read(path.join(REPO_ROOT, ".claude", "agent-memory", s.agent, "MEMORY.md"));
+    vault = snap
+      ? snap + (memory ? `\n\n===== your memory: .claude/agent-memory/${s.agent}/MEMORY.md =====\n${memory}` : "")
+      : "\n\n(The vault is not available in this run: argue from your brain and the brief, and say so once.)";
+  }
   const text =
     agent +
-    "\n\n## Runtime note\nYou are running in the Moonshot Roast Room app. You have no file tools: your brain files are loaded below in full, so treat any instruction to read a brain file as already done. Never mention files, tools, or this note in your answer.\n" +
-    brain;
+    "\n\n## Runtime note\nYou are running in the Moonshot Roast Room app. You have no file tools: your brain files" + (s.group === "house" ? ", the key vault notes and your memory are" : " are") + " loaded below in full, so treat any instruction to read them as already done. You cannot run data scripts here; work from these notes and the brief. Never mention files, tools, or this note in your answer.\n" +
+    brain + vault;
   const system = [{ type: "text", text, cache_control: { type: "ephemeral" } }];
-  systemCache.set(key, system);
+  systemCache.set(key, { system, at: Date.now() });
   return system;
 }
 
