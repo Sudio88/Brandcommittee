@@ -70,6 +70,7 @@ async function boot() {
   state.seats = r.seats;
   state.byKey = Object.fromEntries(r.seats.map((s) => [s.key, s]));
   state.runner = r.runner;
+  $("#version").textContent = `v${r.version} · ${r.seats.length} seats`;
   if (r.runner === "api" && !r.hasKey) toast("No ANTHROPIC_API_KEY found in .env. Add it and restart the server.");
   renderSeats();
   renderSamples();

@@ -7,6 +7,8 @@ import { startCouncil, getSession, subscribe, listSaved, loadSaved, MODELS } fro
 import { usage } from "./lib/anthropic.mjs";
 import * as watch from "./lib/watch.mjs";
 
+const VERSION = (() => { try { return JSON.parse(fs.readFileSync(path.join(APP_ROOT, "..", "package.json"), "utf8")).version; } catch { return "?"; } })();
+
 const PORT = Number(process.env.PORT) || 4740;
 const PUBLIC = path.join(APP_ROOT, "public");
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".webp": "image/webp", ".ico": "image/x-icon", ".json": "application/json", ".ttf": "font/ttf", ".txt": "text/plain; charset=utf-8" };
@@ -33,7 +35,7 @@ const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
   const p = url.pathname;
   try {
-    if (p === "/api/seats") return send(res, 200, { seats: SEATS, models: MODELS, runner: RUNNER, hasKey: Boolean(env("ANTHROPIC_API_KEY")) });
+    if (p === "/api/seats") return send(res, 200, { version: VERSION, seats: SEATS, models: MODELS, runner: RUNNER, hasKey: Boolean(env("ANTHROPIC_API_KEY")) });
     if (p === "/api/usage") return send(res, 200, usage);
     if (p === "/api/council" && req.method === "POST") {
       if (RUNNER !== "api") return send(res, 403, { error: "This room is a viewer. Run /roast-room in Claude Code, or set COUNCIL_RUNNER=api in .env." });
@@ -83,4 +85,4 @@ server.on("error", (e) => {
   }
   throw e;
 });
-server.listen(PORT, "127.0.0.1", () => console.log(`Moonshot Roast Room on http://localhost:${PORT} (${RUNNER === "api" ? "viewer + API runner" : "viewer: run /roast-room in Claude Code"})`));
+server.listen(PORT, "127.0.0.1", () => console.log(`Moonshot Roast Room v${VERSION} (${SEATS.length} seats) on http://localhost:${PORT} (${RUNNER === "api" ? "viewer + API runner" : "viewer: run /roast-room in Claude Code"})`));

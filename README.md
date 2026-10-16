@@ -38,6 +38,15 @@ bash install.sh      # or: bash install.sh "/path/to/Moonshot-Vault"
 
 It adds the skill and 8 brains to `Moonshot-Vault/.claude/skills/roast-room/`, the 8 seat agents to `.claude/agents/`, the room app to `Moonshot-Vault/Roast-Room/`, merges two permission rules into `.claude/settings.json`, and appends a short "Roast Room" section to the vault's `CLAUDE.md`. It never overwrites your `moonshot-*` expert agents or any vault note. Run it again after pulling updates.
 
+## Update to the latest version
+
+```bash
+cd Roastroom        # the folder you cloned
+bash update.sh      # or: npm run update
+```
+
+It pulls the latest code, refreshes the copy in your vault if you installed one, stops whatever runs on port 4740 (the original Roast Room on 4730 is left alone) and starts the room. The top-left corner of the page shows the version and seat count (for example `v2.1.0 · 8 seats`); if it doesn't match what `update.sh` printed, press Cmd+Shift+R.
+
 ## Run a roast
 
 1. Start the room: `cd Moonshot-Vault/Roast-Room && npm start`, then open http://localhost:4740.
