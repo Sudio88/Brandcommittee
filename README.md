@@ -31,8 +31,8 @@ A full council seats all eight: the six house experts plus Hormozi and Godin.
 You need [Claude Code](https://claude.com/claude-code) and [Node.js](https://nodejs.org) 20 or newer.
 
 ```bash
-git clone https://github.com/Sudio88/Roastroom.git
-cd Roastroom
+git clone https://github.com/Sudio88/Brandcommittee.git
+cd Brandcommittee
 bash install.sh      # or: bash install.sh "/path/to/Moonshot-Vault"
 ```
 
@@ -41,7 +41,7 @@ It adds the skill and 8 brains to `Moonshot-Vault/.claude/skills/roast-room/`, t
 ## Update to the latest version
 
 ```bash
-cd Roastroom        # the folder you cloned
+cd Brandcommittee   # the folder you cloned
 bash update.sh      # or: npm run update
 ```
 

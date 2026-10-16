@@ -11,7 +11,7 @@
 set -euo pipefail
 
 SRC="$(cd "$(dirname "$0")" && pwd)"
-BRANCH="claude/roast-room-setup-w03lft"
+BRANCH="$(git -C "$SRC" rev-parse --abbrev-ref HEAD)"
 VAULT="${1:-$HOME/Library/CloudStorage/GoogleDrive-care@moonshotstudio.ai/My Drive/Moonshot-Vault}"
 PORT="${PORT:-4740}"
 
