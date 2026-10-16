@@ -75,4 +75,12 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, "127.0.0.1", () => console.log(`Roast Room on http://localhost:${PORT} (${RUNNER === "api" ? "viewer + API runner" : "viewer: run /roast-room in Claude Code"})`));
+server.on("error", (e) => {
+  if (e.code === "EADDRINUSE") {
+    console.error(`Port ${PORT} is already in use, probably by another Roast Room that is still running.\n` +
+      `Stop it (lsof -nP -iTCP:${PORT} -sTCP:LISTEN, then kill <PID>), or start this one on another port: PORT=4740 npm start`);
+    process.exit(1);
+  }
+  throw e;
+});
+server.listen(PORT, "127.0.0.1", () => console.log(`Moonshot Roast Room on http://localhost:${PORT} (${RUNNER === "api" ? "viewer + API runner" : "viewer: run /roast-room in Claude Code"})`));
