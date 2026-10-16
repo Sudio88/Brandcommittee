@@ -99,4 +99,4 @@ server.on("error", (e) => {
   }
   throw e;
 });
-server.listen(PORT, "127.0.0.1", () => console.log(`Moonshot Roast Room v${VERSION} (${SEATS.length} seats) on http://localhost:${PORT} (${RUNNER === "api" ? "question box runs on the Anthropic API" : RUNNER === "claude" ? "question box runs through Claude Code" : "viewer: run /roast-room in Claude Code"})`));
+server.listen(PORT, process.env.ROOM_HOST || "127.0.0.1", () => console.log(`Moonshot Roast Room v${VERSION} (${SEATS.length} seats) on http://localhost:${PORT} (${RUNNER === "api" ? "question box runs on the Anthropic API" : RUNNER === "claude" ? "question box runs through Claude Code" : "viewer: run /roast-room in Claude Code"})`));

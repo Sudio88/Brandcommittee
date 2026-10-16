@@ -17,10 +17,13 @@ function findRoot() {
   return path.resolve(APP_ROOT, "..");
 }
 export const REPO_ROOT = findRoot();
+// A host app (e.g. Sales Co-Pilot) can point the room at its own copy of the vault and keep
+// sessions on persistent storage. Both default to the normal layout.
+export const VAULT_DIR = process.env.ROOM_VAULT_DIR ? path.resolve(process.env.ROOM_VAULT_DIR) : REPO_ROOT;
 export const BRAINS_DIR = path.join(REPO_ROOT, ".claude", "skills", "roast-room", "brains");
 export const AGENTS_DIR = path.join(REPO_ROOT, ".claude", "agents");
 // Sessions always sit beside the app: <room folder>/sessions
-export const SESSIONS_DIR = path.join(APP_ROOT, "..", "sessions");
+export const SESSIONS_DIR = process.env.ROOM_SESSIONS_DIR ? path.resolve(process.env.ROOM_SESSIONS_DIR) : path.join(APP_ROOT, "..", "sessions");
 
 let cache = null;
 export function env(key) {
