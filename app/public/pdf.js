@@ -52,7 +52,7 @@ export async function downloadVerdictPdf({ setup, verdict: ev, byKey, id }) {
   await addFonts(doc);
   const logo = "data:image/png;base64," + (await fetchBase64("/brand/moonshot-horizontal-on-light.png"));
   const logoRatio = await new Promise((ok) => { const im = new Image(); im.onload = () => ok(im.naturalHeight / im.naturalWidth || 0.3); im.onerror = () => ok(0.3); im.src = logo; });
-  const logoW = Math.min(90, 26 / logoRatio);
+  const logoW = Math.min(130, 36 / logoRatio);
 
   const v = ev.verdict;
   const seats = ev.seats || [];
@@ -166,7 +166,7 @@ export async function downloadVerdictPdf({ setup, verdict: ev, byKey, id }) {
     font(10.5, isBest ? "semibold" : "normal", C.ink); doc.text(lab, M + 30, y + 13.5, { lineHeightFactor: 1.42 });
     const bx = W - M - 170, bw = 120;
     doc.setFillColor(...C.track); doc.roundedRect(bx, y + 8, bw, 5, 2.5, 2.5, "F");
-    if (typeof sc === "number") { doc.setFillColor(...(isBest ? C.accent : [150, 205, 235])); doc.roundedRect(bx, y + 8, Math.max(5, bw * sc / 10), 5, 2.5, 2.5, "F"); }
+    if (typeof sc === "number") { doc.setFillColor(...(isBest ? C.accent : [190, 198, 208])); doc.roundedRect(bx, y + 8, Math.max(5, bw * sc / 10), 5, 2.5, 2.5, "F"); }
     font(14, "bold", C.ink); doc.text(typeof sc === "number" ? String(sc) : "-", W - M, y + 15, { align: "right" });
     if (isBest) { font(7.5, "semibold", C.accent); doc.text("RECOMMENDED", bx, y + 24); }
     y += rowH + 6;
@@ -224,7 +224,7 @@ export async function downloadVerdictPdf({ setup, verdict: ev, byKey, id }) {
     const tagW = doc.getTextWidth(tag);
     doc.text(tag, W - M, H - 34, { align: "right" });
     font(7.5, "normal", C.mute);
-    doc.text(doc.splitTextToSize(v.disclaimer || "Simulated advisors built from each person's public work. They are not the people and do not speak for them.", CW - tagW - 24), M, H - 34, { lineHeightFactor: 1.35 });
+    doc.text(doc.splitTextToSize(v.disclaimer || "House seats are AI experts grounded in the Moonshot vault. Guest seats are simulated advisors built from each person's public work; they are not the people and do not speak for them.", CW - tagW - 24), M, H - 34, { lineHeightFactor: 1.35 });
   }
 
   const name = `Moonshot Roast Room - ${String(setup.title || id || "verdict").replace(/[\\/:*?"<>|]+/g, "").slice(0, 80)}.pdf`;

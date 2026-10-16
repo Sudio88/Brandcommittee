@@ -14,7 +14,7 @@ const CHAIR_SYSTEM = `You are the Chair of the Moonshot Roast Room, the board ro
 House rules: the newest dated meeting beats older notes; Moonshot's measured numbers beat published benchmarks; Net Marketing Contribution, not GMV or ROAS, is the main KPI; discount ceilings, Monchhichi licence limits and Thai FDA claim rules are hard limits.
 You never argue a side and never add your own pillar. You run the room, keep score, and write in plain English: short sentences, no em dashes, no hype, no tee-ups, no filler. Seat keys (for key fields only): ${SEATS.map((x) => x.key).join(", ")}. In prose, use display names: ${SEATS.map((x) => x.short).join(", ")}.`;
 
-export const DISCLAIMER = "Simulated advisors built from each person's public work. They are not the people and do not speak for them.";
+export const DISCLAIMER = "House seats are AI experts grounded in the Moonshot vault. Guest seats are simulated advisors built from each person's public work; they are not the people and do not speak for them.";
 
 // ---------------------------------------------------------------- sessions
 const sessions = new Map();

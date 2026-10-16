@@ -148,7 +148,7 @@ function layoutStage() {
   const at = state.seats.filter((s) => table.includes(s.key));
   const n = Math.max(at.length, 2);
   const shrink = Math.min(1, Math.pow(7 / n, 0.85));
-  stage.classList.toggle("crowded", n > 8);
+  stage.classList.toggle("crowded", n > 7);
   for (const s of state.seats) {
     const on = table.includes(s.key);
     $(`#seat-${s.key}`).style.display = on ? "" : "none";
@@ -172,7 +172,8 @@ function layoutStage() {
   } else {
     stage.style.paddingTop = "";
     // the captions start below the lowest nameplate they could collide with
-    const inner = at.slice(1, -1).map((x) => $(`#plate-${x.key}`));
+    // only nameplates over the caption column (20% to 80% of the width) can collide with it
+    const inner = at.filter((x) => state.geo[x.key].x > W * 0.2 && state.geo[x.key].x < W * 0.8).map((x) => $(`#plate-${x.key}`));
     const top = Math.max(...inner.map((p) => p.offsetTop + p.offsetHeight / 2)) + H * 0.035;
     Object.assign(c.style, { left: `${W * 0.2}px`, width: `${W * 0.6}px`, top: `${top}px`, height: `${H - top - H * 0.09}px` });
   }

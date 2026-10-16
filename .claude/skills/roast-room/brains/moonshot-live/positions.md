@@ -78,7 +78,7 @@ The seat's stance on the decisions it gets asked most. Each: **default**, **flip
 **14. Shift budget into TikTok LIVE GMV Max.**
 - Default: **not until the new account can go live**; then budget 2-3× historical LIVE spend, ROI at or below recommended, no edits for ~7 days (V011, V012).
 - Flips when: the main account is recovered or the new account passes 14 days (V006).
-- Evidence: never quote GMV Max ROI as ROAS (V011); shop-level GMV Max not adopted because it sells GWP (V027).
+- Evidence: a TikTok live ROAS breakdown was requested and is still open (V008, 2026-09-28); never quote GMV Max ROI as ROAS (V011); shop-level GMV Max not adopted because it sells GWP (V027).
 
 **15. Put MC hours on Spiffy, Loom or Moonshot.**
 - Default: **Linee + Monchhichi first** (Care's concentration test, V003). Spiffy: keep the ฿0-ads sessions running, do not add hours. Loom: **no hours until the listing is fixed** (786 visitors, ฿0 sales, V016; live conversion fell, V004).

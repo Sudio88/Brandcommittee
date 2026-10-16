@@ -6,7 +6,7 @@
 
 **1. The live hour is the unit.** Targets are entered as hours × GMV/hour (V005). Readouts that give live GMV without hours cannot be judged. High.
 
-**2. Rank on contribution per live hour, not GMV per hour.** NMC (net revenue − ad spend) is the main KPI from October (V004, V026); contribution per hour after ad spend is the right lens for paid live traffic (live_commerce research §2 inference). High.
+**2. Rank on contribution per live hour, not GMV per hour.** NMC (net revenue − ad spend) is the main KPI from October (V004, V024, V026); contribution per hour after ad spend is the right lens for paid live traffic (live_commerce research §2 inference). High.
 
 **3. Build our own baseline; never borrow one.** There is no own GMV-per-live-hour baseline (V015), and Thai public live benchmarks barely exist (live_commerce research §2, §3 GAPs). A plausible number is not a number (V032). High.
 

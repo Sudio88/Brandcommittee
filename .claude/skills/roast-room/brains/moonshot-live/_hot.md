@@ -65,4 +65,4 @@ A live hour is a small P&L, not a show. It pays when GMV per hour × margin afte
 - **KOL:** affiliate live hosts, commission (Monchhichi TikTok 3%) (V033).
 - **MKP:** account recovery, re-run and health-rating penalties, ISP lock (V002, V028, S038).
 - **MKT:** LIVE GMV Max spend, Moonshot live ads restore for 11.11 (V011, V017).
-- **Sales:** live hours × GMV/hour inside the locked target; one GMV basis (V005, V019).
+- **Sales:** live hours × GMV/hour inside the locked target; one GMV basis (V005, V019). Control Tower routes live alerts to this seat (V031).
