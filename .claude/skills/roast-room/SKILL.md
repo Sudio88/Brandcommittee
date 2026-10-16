@@ -35,7 +35,7 @@ The council is only as good as the brief, and the vault already holds most of it
    - **The resources and limits**: budget, loss cap, deadline (campaign registration dates count backwards from D-day), people (MCs, creators, team owners).
    - **What success looks like** and the read window. Net Marketing Contribution is the default yardstick.
    - **Which way the team is leaning, and why** (the council tests the lean).
-3. If any of the first four is still missing after the vault, ask in one batch (AskUserQuestion, at most four questions). If the user says "just run it", fill gaps with stated assumptions.
+3. If any of the first four is still missing after the vault, ask in one batch (AskUserQuestion, at most four questions). If the user says "just run it", or the run was started from the room's question box (headless, nobody can answer), never ask: fill gaps with stated assumptions.
 
 Cite the vault notes the brief relies on (`[[path]] (date)`). Keep the brief under 350 words. Mark every assumption `(assumed)`. Never put salaries of named people, personal health or ID numbers in a brief.
 

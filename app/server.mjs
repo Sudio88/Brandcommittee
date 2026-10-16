@@ -6,6 +6,7 @@ import { SEATS } from "./lib/seats.mjs";
 import { startCouncil, getSession, subscribe, listSaved, loadSaved, MODELS } from "./lib/council.mjs";
 import { usage } from "./lib/anthropic.mjs";
 import * as watch from "./lib/watch.mjs";
+import { claudeAvailable, startClaudeCouncil, runnerState } from "./lib/claude-runner.mjs";
 
 const VERSION = (() => { try { return JSON.parse(fs.readFileSync(path.join(APP_ROOT, "..", "package.json"), "utf8")).version; } catch { return "?"; } })();
 
@@ -15,9 +16,13 @@ const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; ch
 
 let running = null; // one council at a time (API runner)
 
-// "viewer" (default): the room plays councils that /roast-room runs in Claude Code.
-// "api": the room can also run councils itself on ANTHROPIC_API_KEY (COUNCIL_RUNNER=api in .env).
-const RUNNER = (process.env.COUNCIL_RUNNER || env("COUNCIL_RUNNER") || "viewer").toLowerCase() === "api" ? "api" : "viewer";
+// How the question box runs a council (COUNCIL_RUNNER in .env):
+// "claude" (default when Claude Code is installed): the room hands the question to Claude Code,
+//          which runs /roast-room headless in the vault on your Claude plan.
+// "api":    the room runs councils itself on ANTHROPIC_API_KEY (billed to the API account).
+// "viewer": no question box; type /roast-room in Claude Code and the room plays it.
+const WANT = (process.env.COUNCIL_RUNNER || env("COUNCIL_RUNNER") || "").toLowerCase();
+const RUNNER = WANT === "api" ? "api" : WANT === "viewer" ? "viewer" : claudeAvailable() ? "claude" : "viewer";
 watch.startWatching();
 
 function send(res, code, body, type = "application/json") {
@@ -37,6 +42,15 @@ const server = http.createServer(async (req, res) => {
   try {
     if (p === "/api/seats") return send(res, 200, { version: VERSION, seats: SEATS, models: MODELS, runner: RUNNER, hasKey: Boolean(env("ANTHROPIC_API_KEY")) });
     if (p === "/api/usage") return send(res, 200, usage);
+    if (p === "/api/runner") return send(res, 200, { runner: RUNNER, ...runnerState() });
+    if (p === "/api/council" && req.method === "POST" && RUNNER === "claude") {
+      const { prompt, mode } = await readJson(req);
+      if (!prompt || prompt.trim().length < 10) return send(res, 400, { error: "Give the council a real decision (at least a sentence)." });
+      if (watch.runningId()) return send(res, 409, { error: "A council is already in session. Wait for its verdict." });
+      try { startClaudeCouncil(prompt.trim().slice(0, 4000), mode === "quick" ? "quick" : "full"); }
+      catch (e) { return send(res, e.code || 500, { error: e.message }); }
+      return send(res, 200, { queued: true });
+    }
     if (p === "/api/council" && req.method === "POST") {
       if (RUNNER !== "api") return send(res, 403, { error: "This room is a viewer. Run /roast-room in Claude Code, or set COUNCIL_RUNNER=api in .env." });
       if (running && getSession(running)?.status === "running") return send(res, 409, { error: "A council is already in session. Wait for its verdict." });
@@ -85,4 +99,4 @@ server.on("error", (e) => {
   }
   throw e;
 });
-server.listen(PORT, "127.0.0.1", () => console.log(`Moonshot Roast Room v${VERSION} (${SEATS.length} seats) on http://localhost:${PORT} (${RUNNER === "api" ? "viewer + API runner" : "viewer: run /roast-room in Claude Code"})`));
+server.listen(PORT, "127.0.0.1", () => console.log(`Moonshot Roast Room v${VERSION} (${SEATS.length} seats) on http://localhost:${PORT} (${RUNNER === "api" ? "question box runs on the Anthropic API" : RUNNER === "claude" ? "question box runs through Claude Code" : "viewer: run /roast-room in Claude Code"})`));

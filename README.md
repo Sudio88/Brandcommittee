@@ -50,8 +50,8 @@ It pulls the latest code, refreshes the copy in your vault if you installed one,
 ## Run a roast
 
 1. Start the room: `cd Moonshot-Vault/Roast-Room && npm start`, then open http://localhost:4740.
-2. Open Claude Code in the vault folder.
-3. Type `/roast-room` and your decision. The Chair reads Quick-Context and the latest meetings first, then asks only for what is missing.
+2. Type your decision in the box on the table and click **Convene the council** (or type `/roast-room` and your decision in Claude Code opened in the vault, where the Chair can also ask you follow-up questions).
+3. The Chair reads Quick-Context and the latest meetings first.
 4. Watch the house and the guests argue it out in the room.
 5. When the verdict lands, click **Download PDF**. The full report is in `Roast-Room/sessions/<date>-<decision>/verdict.md`.
 
@@ -85,11 +85,15 @@ More ways to run it:
 
 `reports/Moonshot council seat expertise.md` is the research report the house brains were built from: the vault's measured numbers and decisions plus 2024 to 2026 external research for each pillar, with evidence grades and the gaps that still need Seller Centre or internal data. Raw notes are in `research_notes/`. External figures came largely from search summaries and are marked to re-verify.
 
-## Optional: let the room run councils itself
+## Ask from the room
 
-Copy `.env.example` to `.env` in the room folder, add an `ANTHROPIC_API_KEY`, set `COUNCIL_RUNNER=api`, and restart `npm start`. The room then shows a question box: type the decision, pick Full or Quick, and click **Convene the council**. That mode bills your Anthropic API account (roughly 25 to 30 calls per full council), not your Claude plan.
+The room has a question box. Type the decision, pick Full council or Quick, and click **Convene the council**. The room hands the question to Claude Code in the background (`claude -p "/roast-room ..."`, in the vault folder, on your Claude plan), shows "The Chair is reading the vault" while it builds the brief, then plays the council live. Claude Code must be installed and logged in on the same computer. Because nobody can answer the Chair mid-run, it fills gaps from the vault and lists its assumptions in the brief; put your options, numbers and lean in the box. Each run's log is in `sessions/.runs/`.
 
-In API mode the seats cannot open files, so the room loads the vault for them: each house seat gets Quick-Context, Margin-and-Discount-Ceilings, the team protocol, the six newest meeting notes and its own `MEMORY.md` (refreshed every 10 minutes), and the Chair builds the brief from the same notes. Seats cannot run data scripts in this mode, and the learning loop (memory lines, decision note) only runs in Claude Code.
+Set `COUNCIL_RUNNER` in `.env` (in the room folder) to change this:
+
+- `claude` (default when Claude Code is installed): as above.
+- `api`: the room runs councils itself on an `ANTHROPIC_API_KEY` (billed to the API account). The seats cannot open files, so the room loads Quick-Context, the margin ceilings, the team protocol, the six newest meetings and each house seat's `MEMORY.md` for them.
+- `viewer`: no question box; type `/roast-room` in Claude Code and the room plays it.
 
 ## What's inside
 

@@ -13,15 +13,22 @@ const SAMPLES = [
 
 const EXAMPLE = "Should we buy the Shopee 11.11 campaign package for Monchhichi x Linee? Options: buy the full package, join with seller-funded vouchers only, or skip and push TikTok live instead. We declined the 12.12 package at 300k baht with a possible 100-200k loss. Success is positive Net Marketing Contribution on the campaign. Leaning toward vouchers only.";
 
-// The how-to, shown in the side panel while the room is empty and in "How it works".
-const GUIDE = `
-  <div class="guide">
-    <div class="guide-sec">
-      <h4>How to use the Moonshot Roast Room</h4>
-      <ol>
+// steps when the room is only a viewer (no Claude Code on this machine and no API key)
+const VIEWER_STEPS = `
         <li><span>Open Claude Code in the Moonshot-Vault folder.</span></li>
         <li><span>Type <code>/roast-room</code> and your decision.</span></li>
         <li><span>Answer the Chair's questions. Then watch the council argue it out here.</span></li>
+        <li><span>When the verdict lands, download it as a PDF.</span></li>`;
+
+// The how-to, shown in the side panel while the room is empty and in "How it works".
+let GUIDE = `
+  <div class="guide">
+    <div class="guide-sec">
+      <h4>How to use the Moonshot Roast Room</h4>
+      <ol id="guideSteps">
+        <li><span>Type your decision in the box on the table, or pick a sample.</span></li>
+        <li><span>Choose Full council or Quick, then click <b>Convene the council</b>.</span></li>
+        <li><span>The Chair reads the vault, fills the gaps and seats the table. Watch them argue it out here.</span></li>
         <li><span>When the verdict lands, download it as a PDF.</span></li>
       </ol>
     </div>
@@ -35,13 +42,13 @@ const GUIDE = `
         <li><span><b>What success looks like</b>, and by when.</span></li>
         <li><span><b>Which way you're leaning</b>, and why. The council tests it.</span></li>
       </ul>
-      <p class="note" style="margin-top:8px">Left something out? The Chair asks before the council starts.</p>
+      <p class="note" style="margin-top:8px">Left something out? The Chair fills gaps from the vault and lists its assumptions in the brief.</p>
     </div>
     <div class="guide-sec">
       <h4>Example</h4>
       <div class="example">
-        <p><code>/roast-room</code> ${EXAMPLE.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</p>
-        <button class="ghost" type="button" data-copy-example>Copy this example</button>
+        <p>${EXAMPLE.replace(/&/g, "&amp;").replace(/</g, "&lt;")}</p>
+        <button class="ghost" type="button" data-copy-example>Use this example</button>
       </div>
     </div>
     <div class="guide-sec">
@@ -72,6 +79,7 @@ async function boot() {
   state.runner = r.runner;
   $("#version").textContent = `v${r.version} · ${r.seats.length} seats`;
   if (r.runner === "api" && !r.hasKey) toast("No ANTHROPIC_API_KEY found in .env. Add it and restart the server.");
+  if (r.runner === "viewer") GUIDE = GUIDE.replace(/<ol id="guideSteps">[\s\S]*?<\/ol>/, `<ol id="guideSteps">${VIEWER_STEPS}</ol>`);
   renderSeats();
   renderSamples();
   bindUI();
@@ -86,6 +94,26 @@ async function boot() {
   refreshUsage();
   setInterval(watchForLive, 2500);
   setInterval(tickWait, 1000);
+}
+
+// Claude runner: the question went to Claude Code; show progress until the session appears
+function convening() {
+  $("#composer").hidden = true;
+  const w = $("#waiting");
+  w.hidden = false;
+  w.querySelector("h2").textContent = "The Chair is reading the vault";
+  w.querySelector("p").textContent = "Claude Code is building the brief from Quick-Context and the latest meetings, then seating the council. The table fills in here on its own, usually within a few minutes.";
+  w.querySelector("code").textContent = "Convening the council...";
+  layoutStage();
+  const t = setInterval(async () => {
+    if (state.session) return clearInterval(t);
+    const r = await fetch("/api/runner").then((x) => x.json()).catch(() => null);
+    if (r && r.status === "failed") {
+      clearInterval(t);
+      toast(r.error || "Claude Code stopped before the council started.");
+      reset();
+    }
+  }, 3000);
 }
 
 // a council started in Claude Code shows up here on its own
@@ -175,8 +203,10 @@ function layoutStage() {
   } else {
     stage.style.paddingTop = "";
     // the captions start below the lowest nameplate they could collide with
-    // only nameplates over the caption text (the middle half of the width) can collide with it
-    const inner = at.filter((x) => state.geo[x.key].x > W * 0.25 && state.geo[x.key].x < W * 0.75).map((x) => $(`#plate-${x.key}`));
+    // only nameplates over the caption column can collide with it: the full column (20% to 80%)
+    // during a council, the narrower centred text of the empty room otherwise
+    const band = state.session ? 0.2 : 0.28;
+    const inner = at.filter((x) => state.geo[x.key].x > W * band && state.geo[x.key].x < W * (1 - band)).map((x) => $(`#plate-${x.key}`));
     const top = Math.max(...inner.map((p) => p.offsetTop + p.offsetHeight / 2)) + H * 0.035;
     Object.assign(c.style, { left: `${W * 0.2}px`, width: `${W * 0.6}px`, top: `${top}px`, height: `${H - top - H * 0.09}px` });
   }
@@ -204,6 +234,7 @@ function bindUI() {
     const j = await r.json();
     $("#convene").disabled = false;
     if (!r.ok) return toast(j.error || "Could not start the council.");
+    if (j.queued) return convening();
     attach(j.id);
   });
   const openFrom = (e) => { const b = e.target.closest("[data-seat]"); if (b) openCard(b.dataset.seat); };
@@ -216,7 +247,7 @@ function bindUI() {
   $("#guideBtn").addEventListener("click", openGuide);
   document.addEventListener("click", async (e) => {
     if (e.target.closest("[data-copy-example]")) {
-      try { await navigator.clipboard.writeText("/roast-room " + EXAMPLE); toast("Copied. Paste it into Claude Code."); }
+      try { if (!$("#composer").hidden) { $("#prompt").value = EXAMPLE; $("#prompt").focus(); toast("Example placed in the box."); return; } await navigator.clipboard.writeText("/roast-room " + EXAMPLE); toast("Copied. Paste it into Claude Code."); }
       catch { toast("Copy didn't work here. Select the text and copy it."); }
     }
     if (e.target.closest("[data-pdf]")) savePdf(e.target.closest("[data-pdf]"));
@@ -272,8 +303,8 @@ function reset() {
   hideWait();
   $("#stage").classList.remove("live");
   $("#topic").hidden = true;
-  $("#composer").hidden = state.runner !== "api";
-  $("#waiting").hidden = state.runner === "api";
+  $("#composer").hidden = state.runner === "viewer";
+  $("#waiting").hidden = state.runner !== "viewer";
   layoutStage();
   $("#caption").hidden = true;
   $("#cruxes").hidden = true;
