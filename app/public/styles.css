@@ -10,9 +10,9 @@
   --ink: #ffffff;
   --ink-soft: #c9d1dc;
   --ink-mute: #96a2b5;
-  --accent: #37bdf8;
-  --accent-deep: #37bdf8;
-  --accent-soft: rgba(55, 189, 248, 0.12);
+  --accent: #dbe11d;
+  --accent-deep: #dbe11d;
+  --accent-soft: rgba(219, 225, 29, 0.12);
   --go: #3fcf8e;
   --amend: #ff9025;
   --dissent: #ff5a4f;
@@ -35,7 +35,7 @@ body {
 button { font: inherit; cursor: pointer; }
 [hidden] { display: none !important; }
 .muted { color: var(--ink-mute); }
-::selection { background: rgba(55, 189, 248, 0.3); color: var(--ink); }
+::selection { background: rgba(219, 225, 29, 0.3); color: var(--ink); }
 * { caret-color: var(--accent); }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -48,7 +48,7 @@ button { font: inherit; cursor: pointer; }
   position: sticky; top: 0; z-index: 40;
 }
 .brand { display: flex; align-items: center; gap: 14px; white-space: nowrap; }
-.brand-logo { height: 26px; width: auto; display: block; }
+.brand-logo { height: 38px; width: auto; display: block; }
 .brand-rule { width: 1px; height: 22px; background: var(--hairline-strong); }
 .brand-name { font: 500 15px/1 var(--font-display); color: var(--ink); letter-spacing: -0.02em; }
 .stepper { display: flex; gap: 2px; list-style: none; margin: 0 auto; padding: 0; }
@@ -61,7 +61,7 @@ button { font: inherit; cursor: pointer; }
 .stepper li.done { color: var(--ink-soft); }
 .stepper li.done::before { background: var(--accent); }
 .stepper li.active { color: var(--ink); }
-.stepper li.active::before { background: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, .25); }
+.stepper li.active::before { background: var(--accent); box-shadow: 0 0 0 3px rgba(219, 225, 29, .25); }
 .top-actions { display: flex; align-items: center; gap: 10px; }
 .usage { font-size: 12px; color: var(--ink-mute); }
 .ghost {
@@ -96,18 +96,18 @@ button { font: inherit; cursor: pointer; }
   position: relative; width: 100%; aspect-ratio: 16 / 9.4; max-height: calc(100vh - 120px); min-height: 520px;
   border-radius: 20px; overflow: hidden; border: 1px solid var(--hairline);
   background:
-    radial-gradient(70% 40% at 50% 52%, rgba(55, 189, 248, 0.07), transparent 70%),
+    radial-gradient(70% 40% at 50% 52%, rgba(219, 225, 29, 0.07), transparent 70%),
     linear-gradient(180deg, #0a1a28 0%, #07121c 60%, #050d15 100%);
 }
 .wall {
   position: absolute; inset: 0; pointer-events: none;
   background:
     repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.018) 0 1px, transparent 1px 120px),
-    linear-gradient(180deg, transparent 0 46%, rgba(56, 189, 248, 0.05) 46.2%, transparent 47%);
+    linear-gradient(180deg, transparent 0 46%, rgba(219, 225, 29, 0.05) 46.2%, transparent 47%);
 }
 .spot {
   position: absolute; width: 380px; height: 380px; border-radius: 50%; pointer-events: none; z-index: 2;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.10), rgba(55, 189, 248, 0.05) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.10), rgba(219, 225, 29, 0.05) 45%, transparent 70%);
   opacity: 0; transform: translate(-50%, -50%); transition: left .55s var(--ease-out), top .55s var(--ease-out), opacity .4s;
 }
 .spot.on { opacity: 1; }
@@ -168,7 +168,7 @@ button { font: inherit; cursor: pointer; }
   box-shadow:
     inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
     inset 0 18px 40px rgba(255, 255, 255, 0.03),
-    0 -18px 70px rgba(55, 189, 248, 0.07);
+    0 -18px 70px rgba(219, 225, 29, 0.07);
 }
 .table .etch { position: absolute; left: 50%; top: 30%; width: 11%; translate: -50% -50%; opacity: .06; }
 
@@ -207,7 +207,7 @@ button { font: inherit; cursor: pointer; }
   background: rgba(8, 10, 14, .78); color: var(--ink); padding: 11px 14px; font: 14px/1.45 var(--font-text); outline: none;
 }
 .composer textarea::placeholder { color: var(--ink-mute); }
-.composer textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, .18); }
+.composer textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(219, 225, 29, .18); }
 .samples { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
 .samples button {
   background: rgba(255, 255, 255, .04); color: var(--ink-soft); border: 1px solid var(--hairline-strong);

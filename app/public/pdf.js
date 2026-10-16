@@ -4,7 +4,7 @@
 
 const C = {
   ink: [7, 18, 28], soft: [55, 68, 82], mute: [112, 124, 138], rule: [226, 231, 237],
-  tint: [243, 246, 249], track: [228, 233, 239], accent: [55, 189, 248], white: [255, 255, 255],
+  tint: [243, 246, 249], track: [228, 233, 239], accent: [170, 176, 0], white: [255, 255, 255],
 };
 const LABEL = { go: [63, 207, 142], amber: [255, 144, 37], red: [255, 90, 79] };
 const labelColor = (l) => (/DON'T/.test(l) ? LABEL.red : /RESHAPE|WAIT/.test(l) ? LABEL.amber : LABEL.go);
