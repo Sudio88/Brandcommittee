@@ -9,8 +9,8 @@ Usage:
    brain (or in the brief or an earlier round, when a seat quotes another seat).
 2. Vault links, like [[03-Resources/Marketplace-Intelligence/Margin-and-Discount-Ceilings]],
    must resolve to a note in the vault (by path or by note name, Obsidian style).
-   The vault root defaults to the project root (the folder that holds .claude/).
-   If it holds no notes (this repo on its own), the vault check is skipped.
+   The vault root defaults to the project root (the folder that holds .claude/) when it
+   has _Hub/Quick-Context.md; otherwise the vault check is skipped.
 
 Exit code 1 if any quote or vault link is unaccounted for.
 """
@@ -51,7 +51,8 @@ def main():
         print(__doc__)
         sys.exit(2)
     session = Path(sys.argv[1])
-    vault = Path(sys.argv[2]) if len(sys.argv) > 2 else PROJECT
+    explicit = len(sys.argv) > 2
+    vault = Path(sys.argv[2]) if explicit else PROJECT
     brain_text = norm(" ".join(p.read_text(encoding="utf-8", errors="replace") for p in BRAINS.rglob("*.md")))
     session_files = sorted(session.glob("round-*.md")) + [p for p in [session / "verdict.md"] if p.exists()]
     brief = norm((session / "brief.md").read_text(encoding="utf-8")) if (session / "brief.md").exists() else ""
@@ -77,11 +78,11 @@ def main():
         print(f"  UNVERIFIED [{name}] \"{q[:160]}\"")
 
     # 2. vault links
-    paths, names = vault_index(vault)
     missing, found = [], 0
-    if len(paths) < 20:
-        print(f"vault links: skipped (no vault notes under {vault})")
+    if not explicit and not (vault / "_Hub" / "Quick-Context.md").exists():
+        print(f"vault links: skipped (no vault at {vault}; pass the vault path as a second argument)")
     else:
+        paths, names = vault_index(vault)
         for f in [session / "brief.md"] + session_files:
             if not f.exists():
                 continue

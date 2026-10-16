@@ -28,7 +28,7 @@ Institutional memory: dated episodes from the vault that bear on marketplace ope
 
 10. **TikTok main account lost (Sept-Oct 2026).** The main account became unavailable; marketing accounts were verified one phone number at a time in the company name (1 by 10-01); by 10-08 one opened, one assigned to Tammy, one waiting on a SIM, a 14-day no-live window on the new account, and possible rebate loss under investigation. Dual-SIM phones (~฿1,000) chosen over an agency number service. Lesson: the primary channel in May's notes became the recovery project in October; check enforcement history before scaling satellites. (V037, V032, V027, V021)
 
-11. **Dual live ruled out the same day it was planned (2026-09-17).** The morning meeting set a Monchhichi dual live via a marketing account; the afternoon one found same-host dual-channel live counts as a "re-run": ban and −2,000 points against a 200-point start, Tier 6 (~฿10M/month) only. Lesson: read the platform rule before the action item. (V041, V043)
+11. **Dual live ruled out the same day it was planned (2026-09-17).** The planning meeting set a Monchhichi dual live via a marketing account; a later meeting the same day found same-host dual-channel live counts as a "re-run": ban and −2,000 points against a 200-point start, Tier 6 (~฿10M/month) only. Lesson: read the platform rule before the action item. (V041, V043)
 
 12. **300 Spiffy videos, almost no sales (2026-10-06).** ~300 TikTok videos from the KOL programme, 3-4 above 100 likes, no affiliate sales, ~฿700 ad spend. Then Spiffy TikTok follower gain fell from 1,243 (Sept) to 6 (Oct 1-13). Lesson for this seat: on a new or reset TikTok shop, content volume without paid push and sales velocity does not move the algorithm. (V028, V017)
 
