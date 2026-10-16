@@ -54,6 +54,8 @@ Freshness rule: cut-off 2026-08-17 (60 days before 2026-10-16). Any platform fee
 | V041 | `06-Entities-Brands/The-Spiffy-Patch-Brand-Voice.md` | 2026-07-01 | Never-use medical verbs (treat, cure, heal, antibacterial...) |
 | V042 | `06-Entities-Brands/Loom-Why-Story.md` | 2026-07-14 | Loom is a standalone sibling to Linee; "Loom by Linee" deprecated |
 | V043 | `10-Meetings/2026-09-22 CN Brainstorm Next steps` | 2026-09-22 | Cross-border must buy via Thai shop (licence/contract) |
+| V044 | `02-Areas/Marketing-Brand/TikTok-Q3-2026-Beauty-Fest-Package` | 2026-05-20 | TikTok package tiers (Gold ~฿4.8M+, Platinum ~฿21M+) and TikTok's own uplift claims |
+| V045 | vault root `CLAUDE.md` | 2026-10-16 | Vault conventions read alongside Quick-Context (newest note wins, Room = Loom transcription alias) |
 
 ## External sources (S)
 

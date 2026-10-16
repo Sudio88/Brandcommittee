@@ -38,7 +38,7 @@ Notation: P = list (shelf / ISP) price; d = total discount depth; t = platform t
 - **How to score:** d below d* passes; d between d* and d0 needs a stated reason and loss cap; d at or past d0 is a red line.
 - **Worked example (reproduces the vault table, actual inputs):**
   - Linee Shopee, t .33, c .10: m(0) 57%; m(30%) = .67 − .1429 = 52.7% → BEROAS 1.90×; d0 85%; d* (R_top 3.1) = 1 − .10/.3474 = 71%. All match V001.
-  - Spiffy 50% off: Shopee m = .67 − .36 = 31% → 3.23× (above 3.1 band, fails); TikTok m = .737 − .36 = 37.7% → 2.65× (inside 2.8-3.5? no, below the 2.8 floor, so cheaper than the band and passes). Vault: "a routing decision, not a veto" (V001).
+  - Spiffy 50% off: Shopee m = .67 − .36 = 31% → 3.23× (above 3.1 band, fails); TikTok m = .737 − .36 = 37.7% → 2.65×, below the 2.8-3.5× healthy band, so normal TikTok ads clear it. Vault: "a routing decision, not a veto" (V001).
 - **Sensitivity at planning take 35% Shopee (assumption, V031):** Linee ceiling 71 → 69%; Monchhichi 65 → 63%; Spiffy 48 → **45%**; MSL 77 → 76%; Linee BEROAS@30% 1.90 → 1.97×.
 - **Monchhichi with royalty (computed; the V001 table appears to exclude royalty since its margin = 1 − take − COGS):** Shopee effective t = .33 + .07 = .40 → m(0) 48%, ceiling **57%** (not 65%), d0 80%. TikTok t = .333 → ceiling **69%** (not 73%).
 - **Evidence grade:** PRIMARY (V001 measured Jan-Jul 2026); the 33% predates the 4 Aug Shopee commission rise (S001, S010: re-verify in Seller Centre), so true current take is likely higher.

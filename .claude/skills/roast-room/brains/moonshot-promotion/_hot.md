@@ -18,18 +18,16 @@ A discount is a purchase of volume, and this seat only signs purchases it can pr
 9. **Judge on marginal, not average, ROAS and on NMC.** Moonshot's "ROAS above 4" rule is a known error; the bar is marginal ROAS above BEROAS ~1.9 (V014, V039).
 10. **Linee can afford a miss; Moonshot Labs cannot** (EBIT plan 18.9% vs 7.0%) (V001).
 
-## Numbers that matter now (re-read the vault for anything newer)
-- Take: Shopee 33% / TikTok 26.3% measured; Lazada 35% UNVERIFIED assumption; D2C 3.7% gateway. [[03-Resources/Marketplace-Intelligence/Margin-and-Discount-Ceilings]] 2026-09-19 (V001)
-- COGS share of price: Linee 10%, MSL 8%, Monchhichi 12% (฿42 on ฿349), Spiffy 18% (฿90 on ฿499); none checked against a landed BOM (V001).
-- Ceilings Shopee/TikTok: Linee 71/78%, MSL 77/82%, Monchhichi 65/73%, Spiffy 48/60%. Healthy ROAS: Shopee 2.5-3.1×, TikTok 2.8-3.5×, Lazada 2.3-2.8× (V001).
-- Linee Shopee daily baseline ~฿100k Aug, ~฿120k Sep; 9.9 D-day ~4×; best flash slot ~฿10-12k (V037, 2026-09-28).
-- 10.10 vs 9.9: portfolio ฿581k vs ฿664k (-12%); Linee -25% vs 9.9, -50% vs 7.7; Shopee confirmed ฿531k, 65% new buyers (V017, V015, 2026-10-16).
-- Linee 10.10 cancellations 7.6% → 15.6%; cart bank 8,605 units over 4-9 Oct, cart-to-buyer 49.2% on D-day (V015).
-- Platform rebate ~31.8% of gross (฿177k on 10.10) sits in no channel P&L (V015).
-- MSL contribution per pack: single ฿234 vs 4-pack ฿185 (V015).
-- Monchhichi daily 30-40k with cap GWP → ~10-12k after (V040, V032); 61% returning buyers, ~68% of 10.10 GMV on pre-order (V017).
-- Shopee Prime/Extra ≈ 11% of net sales (Jul, ฿400k); exit est. -20-30% sales (V048, 2026-08-27).
-- October target ฿8.8M, Oct 1-6 at ~65% of pace (V029, 2026-10-08).
+## Numbers that matter now (re-read the vault for anything newer than 2026-10-16)
+- Take: Shopee 33% / TikTok 26.3% measured Jan-Jul; Lazada 35% UNVERIFIED; D2C 3.7%. Planning 35% / 28%. [[03-Resources/Marketplace-Intelligence/Margin-and-Discount-Ceilings]] 2026-09-19 (V001); [[10-Meetings/2026-10-05 Oct media feedback]] 2026-10-05 (V031)
+- COGS share: Linee 10%, MSL 8%, Monchhichi 12% (฿42 on ฿349), Spiffy 18% (฿90 on ฿499); no landed BOM. [[03-Resources/Marketplace-Intelligence/Margin-and-Discount-Ceilings]] 2026-09-19 (V001)
+- Ceilings Shopee/TikTok: Linee 71/78%, MSL 77/82%, Monchhichi 65/73% (≈57/69% once 7% royalty is counted, this seat's maths), Spiffy 48/60%. Healthy ROAS: Shopee 2.5-3.1×, TikTok 2.8-3.5×, Lazada 2.3-2.8×. Same note (V001)
+- Linee Shopee baseline ~฿100k/day Aug, ~฿120k Sep; 9.9 D-day ~4×; best flash slot ~฿10-12k; 12.12 Platinum ~฿300k declined. [[10-Meetings/2026-09-28 Campaign confirmation]] 2026-09-28 (V037)
+- 10.10: portfolio ฿581k vs ฿664k on 9.9; Linee -25% vs 9.9, -50% vs 7.7; new buyers 1,817 → 994 → 787; strips B7G7 ฿450k (7.7) vs 7G1 ฿179k. [[02-Areas/Marketing-Brand/2026-10-16-Weekly-Insight-10.10-and-Content]] 2026-10-16 (V017)
+- Shopee 10.10 confirmed ฿531k; cancels 7.6% → 15.6%; cart bank 8,605 units; rebate ~31.8% of gross; gift stack 8 vs plan 3; MSL single ฿234 vs 4-pack ฿185 CPO. [[02-Areas/Marketing-Brand/2026-10-16-10.10-Shopee-Review-Reconciliation]] 2026-10-16 (V015)
+- Monchhichi ~30-40k/day with cap GWP → ~10-12k after. [[10-Meetings/2026-09-24 กลยุทธ์การเพิ่มประสิทธิภาพแคมเปญโฆษณาและยอดขาย]] 2026-09-24 (V040); [[10-Meetings/2026-10-05 Daily Check-in - Ads Spend & Direction]] 2026-10-05 (V032)
+- Shopee Prime ≈ 11% of net sales (Jul, ฿400k); exit est. -20-30% sales. [[10-Meetings/2026-08-27 MKP Cost Structure Review]] 2026-08-27 (V048)
+- October target ฿8.8M; Oct 1-6 ~65% of pace. [[10-Meetings/2026-10-08 Business Review (weekly)]] 2026-10-08 (V029)
 
 ## First five frameworks (full list in frameworks.md)
 1. **Promo waterfall to CPO:** list → seller discount → seller voucher share → P_net; minus take, COGS, royalty, GWP+royalty, shipping subsidy, ฿1.07.

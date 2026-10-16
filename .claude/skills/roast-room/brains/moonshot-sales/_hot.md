@@ -24,7 +24,7 @@ A month is a number we locked, a curve we can forecast and a contribution we can
 
 - October target **8.8M**; 1-6 Oct ~1M (~65% of pace); run-rate projection **5.75M**; gap ~3M. [[10-Meetings/2026-10-08 Business Review (weekly)]] 2026-10-08
 - **CONFLICT:** vault says ~200k/day needed; arithmetic is (8.8M − 1.0M) ÷ 25 = **~312k/day**. 200k/day × 25 + 1M = 6.0M, near the projection. Use 312k until Peter confirms. Same note.
-- 1-6 Oct vs comparable: sales −30%, spend −43%, contribution −26% to ~2.73M. Same note.
+- 1-6 Oct vs comparable: sales −30%, spend −43%, contribution −26% to ~2.73M (base unclear: 2.73M exceeds the ~1M of 1-6 Oct sales; confirm the period before citing). Same note.
 - Portfolio 7-14 Oct vs 7-14 Sep: ฿2.034M → ฿1.726M (−15.2%), ads −23.7%, ROAS 3.66 → 4.07. Linee normal day ฿141.5k → ฿113.2k; Moonshot ฿39.2k → ฿27.6k. [[02-Areas/Marketing-Brand/2026-10-16-Weekly-MKT-7-14Oct-Insight]] 2026-10-16
 - 10.10 ฿581k vs 9.9 ฿664k (−12%) on 20% less spend; Linee −25% vs 9.9, −50% vs 7.7. [[02-Areas/Marketing-Brand/2026-10-16-Weekly-Insight-10.10-and-Content]] 2026-10-16
 - Shopee = **83%** of Sept sales; **90.3%** of 10.10 GMV. [[moonshot-sales/MEMORY]], [[...-10.10-MKP-Recap-Reconciliation]] 2026-10-16
