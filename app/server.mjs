@@ -7,7 +7,7 @@ import { startCouncil, getSession, subscribe, listSaved, loadSaved, MODELS } fro
 import { usage } from "./lib/anthropic.mjs";
 import * as watch from "./lib/watch.mjs";
 
-const PORT = Number(process.env.PORT) || 4730;
+const PORT = Number(process.env.PORT) || 4740;
 const PUBLIC = path.join(APP_ROOT, "public");
 const TYPES = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".svg": "image/svg+xml", ".png": "image/png", ".webp": "image/webp", ".ico": "image/x-icon", ".json": "application/json", ".ttf": "font/ttf", ".txt": "text/plain; charset=utf-8" };
 
@@ -78,7 +78,7 @@ const server = http.createServer(async (req, res) => {
 server.on("error", (e) => {
   if (e.code === "EADDRINUSE") {
     console.error(`Port ${PORT} is already in use, probably by another Roast Room that is still running.\n` +
-      `Stop it (lsof -nP -iTCP:${PORT} -sTCP:LISTEN, then kill <PID>), or start this one on another port: PORT=4740 npm start`);
+      `Stop it (lsof -nP -iTCP:${PORT} -sTCP:LISTEN, then kill <PID>), or start this one on another port: PORT=4750 npm start`);
     process.exit(1);
   }
   throw e;

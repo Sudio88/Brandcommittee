@@ -44,7 +44,7 @@ Cite the vault notes the brief relies on (`[[path]] (date)`). Keep the brief und
 - Pick the table per the mode. For a full council, name the two guests and the regime that chose them in one line (`seats.md`).
 - Set a relevance weight per seat (1 to 3) with a one-line reason, per `seats.md`.
 - Create the session folder, save `brief.md` (the brief, options, the seats and weights table) and `council.json` (`live-room.md`).
-- Tell the user once: "Watch it live at http://localhost:4730" (start the room with `npm start` in the room folder in the background if it is not running; the council runs the same without it).
+- Tell the user once: "Watch it live at http://localhost:4740" (start the room with `npm start` in the room folder in the background if it is not running; the council runs the same without it).
 
 ## Step 3: Round 1, opening positions
 
@@ -77,7 +77,7 @@ Quick mode skips this round when the Round 2 spread on the top option is 3 or le
 
 1. Run `python3 .claude/skills/roast-room/scripts/check_quotes.py <session folder>` (try `python` if `python3` is missing). It checks two things: every guest quote attributed to a source id is verbatim in that seat's brain, and every `[[vault link]]` a seat cited resolves to a note. Remove unverified quotes from the verdict and treat unresolved vault links as unsupported (say so in the Chair notes). Without Python, check by searching the brain folder and the vault yourself.
 2. Compute the numbers from the last round's cards per `scoring.md`, apply the overrides, and write `verdict.md` from `report-template.md`. Write `verdict.json` last; it tells the room the council is over.
-3. Show the user a short verdict in chat: the label and the call, the option scores on one line, the three arguments that carried the room (one line each, with the seat), the strongest objection (one line, with the seat), and at most three next steps with owner and date. Then the path to `verdict.md`, one line saying the branded PDF is one click away ("Download PDF" at http://localhost:4730), and one line offering a follow-up with any seat or a rerun with new numbers. Under 200 words.
+3. Show the user a short verdict in chat: the label and the call, the option scores on one line, the three arguments that carried the room (one line each, with the seat), the strongest objection (one line, with the seat), and at most three next steps with owner and date. Then the path to `verdict.md`, one line saying the branded PDF is one click away ("Download PDF" at http://localhost:4740), and one line offering a follow-up with any seat or a rerun with new numbers. Under 200 words.
 
 ## Step 8: Learning loop (house seats only)
 

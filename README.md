@@ -44,7 +44,7 @@ It adds the skill and 12 brains to `Moonshot-Vault/.claude/skills/roast-room/`, 
 
 ## Run a roast
 
-1. Start the room: `cd Moonshot-Vault/Roast-Room && npm start`, then open http://localhost:4730.
+1. Start the room: `cd Moonshot-Vault/Roast-Room && npm start`, then open http://localhost:4740.
 2. Open Claude Code in the vault folder.
 3. Type `/roast-room` and your decision. The Chair reads Quick-Context and the latest meetings first, then asks only for what is missing.
 4. Watch the house and the guests argue it out in the room.

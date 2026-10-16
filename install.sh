@@ -73,6 +73,6 @@ fi
 
 echo
 echo "Done. Next:"
-echo "  1. cd \"$VAULT/Roast-Room\" && npm start      (then open http://localhost:4730)"
+echo "  1. cd \"$VAULT/Roast-Room\" && npm start      (then open http://localhost:4740)"
 echo "  2. Open Claude Code in the vault folder and type: /roast-room <your decision>"
 echo "  Restart any open Claude Code session so it loads the new agents."
