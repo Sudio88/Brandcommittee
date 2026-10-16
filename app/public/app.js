@@ -174,8 +174,8 @@ function layoutStage() {
   } else {
     stage.style.paddingTop = "";
     // the captions start below the lowest nameplate they could collide with
-    // only nameplates over the caption column (20% to 80% of the width) can collide with it
-    const inner = at.filter((x) => state.geo[x.key].x > W * 0.2 && state.geo[x.key].x < W * 0.8).map((x) => $(`#plate-${x.key}`));
+    // only nameplates over the caption text (the middle half of the width) can collide with it
+    const inner = at.filter((x) => state.geo[x.key].x > W * 0.25 && state.geo[x.key].x < W * 0.75).map((x) => $(`#plate-${x.key}`));
     const top = Math.max(...inner.map((p) => p.offsetTop + p.offsetHeight / 2)) + H * 0.035;
     Object.assign(c.style, { left: `${W * 0.2}px`, width: `${W * 0.6}px`, top: `${top}px`, height: `${H - top - H * 0.09}px` });
   }

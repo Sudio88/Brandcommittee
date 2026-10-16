@@ -90,6 +90,7 @@ In API mode the seats cannot open files, so the room loads the vault for them: e
 | `.claude/agents/` | The 8 council seat agents, plus copies of the six `moonshot-*` expert definitions |
 | `app/` | The room: a zero-dependency Node server, the web page, and the PDF builder |
 | `install.sh` | Installs everything into the vault |
+| `tools/portraits/` | The portrait generator (Gemini, Hormozi's 3D style, four lip-sync frames per seat); needs `GEMINI_API_KEY` |
 | `reports/`, `research_notes/` | The research behind the house brains |
 
 ## About the seats
