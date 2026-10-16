@@ -1,6 +1,6 @@
 # Moonshot Roast Room
 
-This repo is the Moonshot Roast Room: Moonshot Studio's board room. Six house experts (Sales, Promo, KOL, Live, MKP, MKT: the vault's `moonshot-*` agents) and six guest legends (Hormozi, Levinson, Godin, Sharp, Ries & Trout, Sutherland) debate a decision, then a Chair returns a scored verdict. It is built to be installed into the Moonshot vault with `bash install.sh`; it also runs here on its own (house seats then argue from their brains and the brief, without the live vault).
+This repo is the Moonshot Roast Room: Moonshot Studio's board room. Six house experts (Sales, Promo, KOL, Live, MKP, MKT: the vault's `moonshot-*` agents) and two guest legends (Alex Hormozi and Seth Godin) debate a decision, then a Chair returns a scored verdict. It is built to be installed into the Moonshot vault with `bash install.sh`; it also runs here on its own (house seats then argue from their brains and the brief, without the live vault).
 
 - When the user brings a decision ("should we...", a campaign package, discount, creator deal, live hours, new SKU, budget shift), run `/roast-room`. For one seat, use `/roast-room ask <seat> ...`.
 - If the user asks to start or open the room, run `npm start` in the background and tell them to open http://localhost:4740. It needs Node 20 or newer and nothing else.

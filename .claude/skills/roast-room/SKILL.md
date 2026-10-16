@@ -1,14 +1,14 @@
 ---
 name: roast-room
-description: Use when the Moonshot team wants a hard decision debated and scored by the board, says "roast room", "put this in the Roast Room", "convene the board", "take this to the council table", "roast this", or can't decide on a campaign package, a discount or bundle, a creator deal or commission, live hours, Mall vs non-Mall, a new SKU or brand move, a budget shift, an event, a market entry. Moonshot Studio's six house experts (Sales, Promo, KOL, Live, MKP, MKT) take their seats, joined by guest legends (Hormozi, Levinson, Godin, Sharp, Ries & Trout, Sutherland); they argue over three rounds and a Chair returns a scored verdict with owners, dates, dissent and kill criteria, played live in the room app. Also does a one-seat consult ("ask the promo seat", "ask Sharp"). For a fast synthesized answer without scoring, the vault's /council or /ask is lighter.
-argument-hint: "[the decision] [--quick] [--house] [--committee] [--all] [--seats promo,kol,sharp,...] | ask <seat> [question]"
+description: Use when the Moonshot team wants a hard decision debated and scored by the board, says "roast room", "put this in the Roast Room", "convene the board", "take this to the council table", "roast this", or can't decide on a campaign package, a discount or bundle, a creator deal or commission, live hours, Mall vs non-Mall, a new SKU or brand move, a budget shift, an event, a market entry. Moonshot Studio's six house experts (Sales, Promo, KOL, Live, MKP, MKT) take their seats, joined by two guest legends (Alex Hormozi and Seth Godin); they argue over three rounds and a Chair returns a scored verdict with owners, dates, dissent and kill criteria, played live in the room app. Also does a one-seat consult ("ask the promo seat", "ask Godin"). For a fast synthesized answer without scoring, the vault's /council or /ask is lighter.
+argument-hint: "[the decision] [--quick] [--house] [--seats promo,kol,godin,...] | ask <seat> [question]"
 ---
 
 ## What this does
 
-The Moonshot Roast Room runs a board meeting on one decision. Each seat is a sub-agent with a brain. The six **house seats** are Moonshot Studio's own experts (the vault's `moonshot-*` agents) arguing from the vault's measured numbers and a researched brain on Thai e-commerce. The six **guest seats** are simulated advisors built from public work. The seats argue across three rounds: open, debate, vote. You act as the **Chair**: you never argue a side, you run the room, keep the score, and write the verdict.
+The Moonshot Roast Room runs a board meeting on one decision. Each seat is a sub-agent with a brain. The six **house seats** are Moonshot Studio's own experts (the vault's `moonshot-*` agents) arguing from the vault's measured numbers and a researched brain on Thai e-commerce. The two **guest seats**, Alex Hormozi and Seth Godin, are simulated advisors built from public work. The seats argue across three rounds: open, debate, vote. You act as the **Chair**: you never argue a side, you run the room, keep the score, and write the verdict.
 
-Read once before the first run: `references/seats.md` (roster, weights, regimes, tensions), `references/round-prompts.md` (what each seat gets), `references/scoring.md` (math and overrides), `references/report-template.md` (output), `references/live-room.md` (the JSON files the room plays).
+Read once before the first run: `references/seats.md` (roster, weights, tensions), `references/round-prompts.md` (what each seat gets), `references/scoring.md` (math and overrides), `references/report-template.md` (output), `references/live-room.md` (the JSON files the room plays).
 
 ## Where things live
 
@@ -18,9 +18,9 @@ Read once before the first run: `references/seats.md` (roster, weights, regimes,
 
 ## Modes
 
-- **Full council** (default): the six house seats plus the **two guest seats** whose doctrine bears most on the decision (`seats.md`, regime table). Three rounds. For decisions that are expensive or hard to undo.
+- **Full council** (default): all eight seats (six house plus Hormozi and Godin), three rounds. For decisions that are expensive or hard to undo.
 - **Quick** (`--quick`): four seats per `seats.md`, Rounds 1 and 2, Round 3 only if the scores did not converge. For reversible calls.
-- **House only** (`--house`): the six house seats. **Committee** (`--committee`): the five doctrine guests (Levinson, Godin, Sharp, Ries & Trout, Sutherland) plus the two house seats with the highest weight to keep it honest on numbers. **All** (`--all`): all twelve; say up front it costs about 36 sub-agent runs.
+- **House only** (`--house`): the six house seats.
 - **Named seats** (`--seats a,b,c`): only those seats, three rounds.
 - **Consult** (`ask <seat> ...`): one seat, one answer, using the single-seat prompt. No scoring, no session folder needed.
 
@@ -41,7 +41,7 @@ Cite the vault notes the brief relies on (`[[path]] (date)`). Keep the brief und
 
 ## Step 2: Set up the room
 
-- Pick the table per the mode. For a full council, name the two guests and the regime that chose them in one line (`seats.md`).
+- Pick the table per the mode.
 - Set a relevance weight per seat (1 to 3) with a one-line reason, per `seats.md`.
 - Create the session folder, save `brief.md` (the brief, options, the seats and weights table) and `council.json` (`live-room.md`).
 - Tell the user once: "Watch it live at http://localhost:4740" (start the room with `npm start` in the room folder in the background if it is not running; the council runs the same without it).
@@ -50,7 +50,7 @@ Cite the vault notes the brief relies on (`[[path]] (date)`). Keep the brief und
 
 Spawn every seat in **one message**, in parallel, foreground (`run_in_background: false`), `subagent_type: council-<key>`, with the Round 1 prompt. If a `council-*` type is not registered in this session, use `general-purpose` with the fallback lines from `round-prompts.md`.
 
-When the cards come back, save them verbatim to `round-1.md`, one `## <Seat>` heading per card using the display names (Sales, Promo, KOL, Live, MKP, MKT, Hormozi, Levinson, Godin, Sharp, Ries, Sutherland), and write the file right away so the room can start playing. Check each card has every field; send a card back once if it is missing scores or a stance. Then add `## Chair notes`:
+When the cards come back, save them verbatim to `round-1.md`, one `## <Seat>` heading per card using the display names (Sales, Promo, KOL, Live, MKP, MKT, Hormozi, Godin), and write the file right away so the room can start playing. Check each card has every field; send a card back once if it is missing scores or a stance. Then add `## Chair notes`:
 
 - The **cruxes**: one to three underlying disagreements (a numbers question, a platform-rule question, or a values question such as contribution now versus brand later), with the seats on each side.
 - The **numbers check**: where seats used different figures for the same thing (fee take, ceiling, baseline), name the vault note that settles it (newest dated meeting wins; measured beats benchmark). If no note settles it, it is a crux.
@@ -65,7 +65,7 @@ Spawn every seat again, in one message, with the Round 2 prompt. Save to `round-
 
 ## Step 5: Draft resolution
 
-Write `draft-resolution.md`: the recommendation (named option and verdict label), the conditions (merge duplicates, keep them checkable, pick one number when seats differ and say whose and which note), next steps with **owner (team name from Quick-Context) and date**, the cheapest test, the loss cap, and kill criteria. Weigh arguments, not headcount: one house seat with a measured number beats three guests with doctrine. Apply the overrides. Write `draft.json`.
+Write `draft-resolution.md`: the recommendation (named option and verdict label), the conditions (merge duplicates, keep them checkable, pick one number when seats differ and say whose and which note), next steps with **owner (team name from Quick-Context) and date**, the cheapest test, the loss cap, and kill criteria. Weigh arguments, not headcount: one house seat with a measured number beats a guest with doctrine. Apply the overrides. Write `draft.json`.
 
 ## Step 6: Round 3, ratification
 
@@ -102,7 +102,7 @@ Run the same protocol sequentially yourself. For each seat, read `.claude/agents
 
 ## Files
 
-- `brains/<slug>/`: one brain per seat (`_hot.md`, `frameworks.md`, `principles.md`, `positions.md`, `voice.md`, `stories.md`, `books.md`, `sources.md`). House brains: `moonshot-sales`, `moonshot-promotion`, `moonshot-kol`, `moonshot-live`, `moonshot-mkp`, `moonshot-mkt`. Guest brains: `alex-hormozi`, `jay-conrad-levinson`, `seth-godin`, `byron-sharp`, `ries-and-trout`, `rory-sutherland`.
+- `brains/<slug>/`: one brain per seat (`_hot.md`, `frameworks.md`, `principles.md`, `positions.md`, `voice.md`, `stories.md`, `books.md`, `sources.md`). House brains: `moonshot-sales`, `moonshot-promotion`, `moonshot-kol`, `moonshot-live`, `moonshot-mkp`, `moonshot-mkt`. Guest brains: `alex-hormozi`, `seth-godin`.
 - `scripts/check_quotes.py`: verifies guest quotes against brains and vault links against the vault.
-- Agents: `.claude/agents/council-{sales,promo,kol,live,mkp,mkt,hormozi,levinson,godin,sharp,ries,sutherland}.md`.
+- Agents: `.claude/agents/council-{sales,promo,kol,live,mkp,mkt,hormozi,godin}.md`.
 - The room app: `<room folder>/app/` (start with `npm start`, see `README.md`).

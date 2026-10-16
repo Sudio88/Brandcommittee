@@ -2,7 +2,7 @@
   "name": "moonshot-roast-room",
   "version": "1.0.0",
   "private": true,
-  "description": "The Moonshot Roast Room: Moonshot Studio's six house experts and guest legends (Hormozi, Levinson, Godin, Sharp, Ries & Trout, Sutherland) debate a decision in Claude Code, live around a table.",
+  "description": "The Moonshot Roast Room: Moonshot Studio's six house experts plus Alex Hormozi and Seth Godin debate a decision in Claude Code, live around a table.",
   "type": "module",
   "scripts": {
     "start": "node app/server.mjs",

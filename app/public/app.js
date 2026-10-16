@@ -47,9 +47,9 @@ const GUIDE = `
     <div class="guide-sec">
       <h4>Good to know</h4>
       <ul>
-        <li><span><b>Full council:</b> the six house seats plus two guest legends the Chair picks, 3 rounds.</span></li>
+        <li><span><b>Full council:</b> the six house seats plus Hormozi and Godin, 3 rounds.</span></li>
         <li><span><b>Quick:</b> add <code>--quick</code> for 4 seats and 2 rounds. Uses far less of your plan.</span></li>
-        <li><span><b>Pick the table:</b> <code>--seats promo,kol,hormozi</code>, <code>--house</code>, <code>--committee</code> (the five doctrine voices) or <code>--all</code> (all 12).</span></li>
+        <li><span><b>Pick the table:</b> <code>--seats promo,kol,hormozi</code> or <code>--house</code> (the six house seats only).</span></li>
         <li><span><b>Every council is saved.</b> Open Past sessions to replay one or download its PDF.</span></li>
       </ul>
     </div>

@@ -2,7 +2,7 @@
 
 ![The Moonshot Roast Room](docs/room.png)
 
-Moonshot Studio's board room. Bring a hard decision and the table argues it out: your **six house experts** (the vault's `moonshot-*` team) plus **guest legends** built from public work. Then a Chair hands you a scored verdict with owners, dates, dissent and kill criteria, and a one-click PDF. The council runs in Claude Code inside the Moonshot vault, and a small local web app shows the seats around a table talking it through.
+Moonshot Studio's board room. Bring a hard decision and the table argues it out: your **six house experts** (the vault's `moonshot-*` team) plus **two guest legends**, Alex Hormozi and Seth Godin, built from public work. Then a Chair hands you a scored verdict with owners, dates, dissent and kill criteria, and a one-click PDF. The council runs in Claude Code inside the Moonshot vault, and a small local web app shows the seats around a table talking it through.
 
 ## The table
 
@@ -22,13 +22,9 @@ Moonshot Studio's board room. Bring a hard decision and the table argues it out:
 | Seat | Pillar | The question they own |
 |---|---|---|
 | Alex Hormozi | Offers, pricing, and sales | Will people pay, how much, and how do we close? |
-| Jay Conrad Levinson | Capital-scarce growth | What can time, energy and imagination do instead of money? |
 | Seth Godin | Product and launch | Is it remarkable, and who exactly is it for? |
-| Byron Sharp | Brand growth evidence | Does it grow penetration, and are we easy to find and remember? |
-| Ries & Trout | Positioning and category | Which word do we own, and which battle are we choosing? |
-| Rory Sutherland | Reframing and signalling | What perception could we change instead of the product? |
 
-A full council seats the six house experts plus the two guests whose doctrine fits the decision (the regime table from the marketing doctrine committee picks them).
+A full council seats all eight: the six house experts plus Hormozi and Godin.
 
 ## Install into the vault (once)
 
@@ -40,7 +36,7 @@ cd Roastroom
 bash install.sh      # or: bash install.sh "/path/to/Moonshot-Vault"
 ```
 
-It adds the skill and 12 brains to `Moonshot-Vault/.claude/skills/roast-room/`, the 12 seat agents to `.claude/agents/`, the room app to `Moonshot-Vault/Roast-Room/`, merges two permission rules into `.claude/settings.json`, and appends a short "Roast Room" section to the vault's `CLAUDE.md`. It never overwrites your `moonshot-*` expert agents or any vault note. Run it again after pulling updates.
+It adds the skill and 8 brains to `Moonshot-Vault/.claude/skills/roast-room/`, the 8 seat agents to `.claude/agents/`, the room app to `Moonshot-Vault/Roast-Room/`, merges two permission rules into `.claude/settings.json`, and appends a short "Roast Room" section to the vault's `CLAUDE.md`. It never overwrites your `moonshot-*` expert agents or any vault note. Run it again after pulling updates.
 
 ## Run a roast
 
@@ -62,10 +58,8 @@ More ways to run it:
 
 - `/roast-room --quick ...` four seats, two rounds. For reversible calls.
 - `/roast-room --house ...` the six house experts only.
-- `/roast-room --committee ...` the five doctrine voices (Levinson, Godin, Sharp, Ries & Trout, Sutherland) plus the two house seats that own the numbers.
-- `/roast-room --all ...` all twelve seats (about 36 sub-agent runs).
 - `/roast-room --seats promo,kol,hormozi ...` exactly those seats.
-- `/roast-room ask sharp ...` one answer from one seat.
+- `/roast-room ask godin ...` one answer from one seat.
 
 `/council` and `/ask` stay your fast path for everyday questions; the Roast Room is for decisions worth a scored debate.
 
@@ -92,8 +86,8 @@ In API mode the seats cannot open files, so the room loads the vault for them: e
 
 | Path | What |
 |---|---|
-| `.claude/skills/roast-room/` | The skill: protocol, prompts, scoring, report template, checker, and the 12 brains |
-| `.claude/agents/` | The 12 council seat agents, plus copies of the six `moonshot-*` expert definitions |
+| `.claude/skills/roast-room/` | The skill: protocol, prompts, scoring, report template, checker, and the 8 brains |
+| `.claude/agents/` | The 8 council seat agents, plus copies of the six `moonshot-*` expert definitions |
 | `app/` | The room: a zero-dependency Node server, the web page, and the PDF builder |
 | `install.sh` | Installs everything into the vault |
 | `reports/`, `research_notes/` | The research behind the house brains |

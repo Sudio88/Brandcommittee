@@ -16,28 +16,9 @@
 | Seat | Agent | Pillar | Owns the question | Brain |
 |---|---|---|---|---|
 | Hormozi | `council-hormozi` | Offers, pricing, and sales | Will people pay, how much, and how do we close? | `brains/alex-hormozi/` |
-| Levinson | `council-levinson` | Capital-scarce growth | What can time, energy and imagination do instead of money, and is it profit, not just sales? | `brains/jay-conrad-levinson/` |
 | Godin | `council-godin` | Product and launch | Is it remarkable, and who exactly is it for? | `brains/seth-godin/` |
-| Sharp | `council-sharp` | Brand growth evidence | Does it grow penetration, and are we easy to find and remember? | `brains/byron-sharp/` |
-| Ries | `council-ries` | Positioning and category | Which word do we own, and which battle are we choosing? | `brains/ries-and-trout/` |
-| Sutherland | `council-sutherland` | Reframing and signalling | What perception could we change instead of the product? | `brains/rory-sutherland/` |
 
-Brain paths are relative to `.claude/skills/roast-room/`.
-
-## Choosing the two guests (full council)
-
-Name the regime first, then the guests. Opening with a doctrine produces a confident wrong answer.
-
-| Regime | Situation at Moonshot | Invite |
-|---|---|---|
-| R1 New SKU, no money | New SKU or brand, no reviews, no media budget | Levinson + Godin |
-| R2 Category entry | Entering an occupied category or a new market (SG, MY, CN shoppers) | Ries & Trout + Sharp |
-| R3 Funded scale-up | Reviews exist, marginal ROAS above break-even, budget to deploy | Sharp + Sutherland |
-| R4 Efficient plateau | ROAS fine, growth flat, promo-dependent | Sutherland + Sharp |
-| R5 Repeat and referral | First order won; repeat, bundles, community | Levinson + Hormozi |
-| Offer or price call | Discount depth, bundles, GWP, package buy, price change | Hormozi + Sutherland |
-
-If two regimes fit, pick the guest pair whose doctrines disagree with each other: the fight is the value.
+Brain paths are relative to `.claude/skills/roast-room/`. A full council seats all eight.
 
 ## Relevance weights
 
@@ -58,9 +39,8 @@ Every seat is at least 1. Exactly one or two seats get a 3, and at least one 3 g
 ## Natural tensions to expect
 
 - Promo and Sales (contribution now, ceilings, loss caps) against MKT and Live (traffic, reach, live-only price drops).
-- Sharp (broad reach, continuous, physical availability) against Godin and Ries & Trout (smallest viable audience, one word, sacrifice).
-- Hormozi (offer and 30-day cash) against Sutherland (change the perception, not the price) and Sharp (brand is built over years).
-- Levinson (profit with imagination, no money) against MKT (funded media plan).
+- MKT (broad reach, continuous media) against Godin (smallest viable audience, remarkable product first).
+- Hormozi (offer and 30-day cash) against Godin (build the thing people talk about) and MKT (brand is built over months).
 - KOL (creator GMV) against Promo (commission stacked on discount crosses the ceiling).
 - MKP (platform rules, eligibility, shop health) against anyone who assumed a rule without a date.
 

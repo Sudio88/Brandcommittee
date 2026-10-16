@@ -30,7 +30,7 @@ Round 3's FINAL SCORE is each seat's support for the draft resolution as written
 
 ## Overrides (applied after the band, and stated in the report)
 
-1. **Hard-limit cap.** Any seat that ends at `RUIN RISK: likely` on the recommended option (a ceiling, licence, claim-rule or platform-policy breach, or a loss past the cap) caps the verdict at RESHAPE until the resolution names a mitigation that seat endorsed. One seat at a hard limit outweighs seven enthusiastic seats.
+1. **Hard-limit cap.** Any seat that ends at `RUIN RISK: likely` on the recommended option (a ceiling, licence, claim-rule or platform-policy breach, or a loss past the cap) caps the verdict at RESHAPE until the resolution names a mitigation that seat endorsed. One seat at a hard limit outweighs seven enthusiastic ones.
 2. **One-way door cap.** If the recommended option is a one-way door (MKP's call on platform and account risk, Sales's on targets, or a majority of seats) and the spread on it is 4 or more, cap at GO WITH CONDITIONS and make the cheapest test a precondition.
 3. **Unanimity check.** If every seat's top option is the same and their scores for it sit within 1 point in Round 1, the Chair names the strongest unargued alternative as a crux in Round 2 and asks the seats whose pillars are most at risk to argue it at full strength.
 
@@ -53,11 +53,7 @@ One column per seat: its final PILLAR SCORE, which is that seat's judgment of th
 | Marketplace operations (MKP) | Platform economics and readiness |
 | Marketing and growth (MKT) | Incremental contribution and brand |
 | Offers, pricing, and sales (Hormozi) | Offer strength and unit economics |
-| Capital-scarce growth (Levinson) | Profit per baht of effort |
 | Product and launch (Godin) | Remarkability and audience fit |
-| Brand growth evidence (Sharp) | Penetration and availability |
-| Positioning and category (Ries) | Position and focus |
-| Reframing and signalling (Sutherland) | Perceived value per baht |
 
 ## House weight
 

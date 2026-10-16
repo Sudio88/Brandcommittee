@@ -5,8 +5,8 @@
 #   bash install.sh "/path/to/Moonshot-Vault"
 #
 # What it does (safe to run again; it only adds or refreshes Roast Room files):
-#   .claude/skills/roast-room/        the skill, references, checker and 12 seat brains
-#   .claude/agents/council-*.md       the 12 council seat agents (refreshed)
+#   .claude/skills/roast-room/        the skill, references, checker and 8 seat brains
+#   .claude/agents/council-*.md       the 8 council seat agents (refreshed)
 #   .claude/agents/moonshot-*.md      only if missing (your vault's own expert agents are never overwritten)
 #   Roast-Room/                       the room app (app/, package.json); councils land in Roast-Room/sessions/
 #   .claude/settings.json             adds the Roast Room permission rules (merged, nothing removed)
@@ -33,11 +33,11 @@ rm -rf "$VAULT/.claude/skills/roast-room.new"
 cp -R "$SRC/.claude/skills/roast-room" "$VAULT/.claude/skills/roast-room.new"
 rm -rf "$VAULT/.claude/skills/roast-room"
 mv "$VAULT/.claude/skills/roast-room.new" "$VAULT/.claude/skills/roast-room"
-echo "  skill and 12 brains   -> .claude/skills/roast-room/"
+echo "  skill and 8 brains   -> .claude/skills/roast-room/"
 
 # 2. council agents (refresh) and the vault's own experts (only if missing)
 cp "$SRC"/.claude/agents/council-*.md "$VAULT/.claude/agents/"
-echo "  12 council agents     -> .claude/agents/council-*.md"
+echo "  8 council agents     -> .claude/agents/council-*.md"
 for f in "$SRC"/.claude/agents/moonshot-*.md; do
   n="$(basename "$f")"
   if [ ! -f "$VAULT/.claude/agents/$n" ]; then cp "$f" "$VAULT/.claude/agents/$n"; echo "  added missing expert  -> .claude/agents/$n"; fi

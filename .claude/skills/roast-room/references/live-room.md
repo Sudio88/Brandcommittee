@@ -32,7 +32,7 @@ The room is optional. Write these files anyway; they cost a few lines and the co
     "promo": { "weight": 3, "reason": "Package economics vs the ceiling" },
     "mkp": { "weight": 2, "reason": "Campaign eligibility and fees" }
   },
-  "seats": ["sales", "promo", "kol", "live", "mkp", "mkt", "hormozi", "sutherland"],
+  "seats": ["sales", "promo", "kol", "live", "mkp", "mkt", "hormozi", "godin"],
   "brief": "Two or three sentences.",
   "assumptions": ["Package price as quoted by Shopee (assumed)"]
 }

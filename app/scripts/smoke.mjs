@@ -16,7 +16,7 @@ for (const s of SEATS) {
     need(fs.existsSync(path.join(APP_ROOT, "public", "portraits", `${s.key}-${sh}.webp`)), `portrait ${s.key}-${sh}.webp`);
   console.log(`${s.short.padEnd(11)} system prompt ${String(systemFor(s.key)[0].text.length).padStart(6)} chars`);
 }
-console.log(bad ? `\n${bad} missing file(s)` : "\nall 12 seats complete");
+console.log(bad ? `\n${bad} missing file(s)` : `\nall ${SEATS.length} seats complete`);
 if (!process.argv.includes("--api")) process.exit(bad ? 1 : 0);
 
 const ai = await import("../lib/anthropic.mjs");

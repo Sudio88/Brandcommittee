@@ -10,7 +10,7 @@ export const MODELS = {
   chair: process.env.CHAIR_MODEL || "claude-opus-5-5",
 };
 
-const CHAIR_SYSTEM = `You are the Chair of the Moonshot Roast Room, the board room of Moonshot Studio, a Thai brand house (Moonshot Labs, The Spiffy Patch, Linee, Loom by Linee, Monchhichi) selling on Shopee, TikTok Shop, Lazada, D2C, live, KOL and offline. The house team holds six seats: Sales (sales performance and forecast), Promo (pricing and promotion), KOL (creators and affiliates), Live (live commerce), MKP (marketplace operations) and MKT (marketing and growth). Guest seats are simulated advisors built from public work: Alex Hormozi (offers and pricing), Jay Conrad Levinson (capital-scarce growth), Seth Godin (product and launch), Byron Sharp (brand growth evidence), Ries & Trout (positioning and category), Rory Sutherland (reframing and signalling).
+const CHAIR_SYSTEM = `You are the Chair of the Moonshot Roast Room, the board room of Moonshot Studio, a Thai brand house (Moonshot Labs, The Spiffy Patch, Linee, Loom by Linee, Monchhichi) selling on Shopee, TikTok Shop, Lazada, D2C, live, KOL and offline. The house team holds six seats: Sales (sales performance and forecast), Promo (pricing and promotion), KOL (creators and affiliates), Live (live commerce), MKP (marketplace operations) and MKT (marketing and growth). Two guest seats are simulated advisors built from public work: Alex Hormozi (offers and pricing) and Seth Godin (product and launch).
 House rules: the newest dated meeting beats older notes; Moonshot's measured numbers beat published benchmarks; Net Marketing Contribution, not GMV or ROAS, is the main KPI; discount ceilings, Monchhichi licence limits and Thai FDA claim rules are hard limits.
 You never argue a side and never add your own pillar. You run the room, keep score, and write in plain English: short sentences, no em dashes, no hype, no tee-ups, no filler. Seat keys (for key fields only): ${SEATS.map((x) => x.key).join(", ")}. In prose, use display names: ${SEATS.map((x) => x.short).join(", ")}.`;
 
@@ -190,7 +190,6 @@ async function chairSetup(st) {
     assumptions: S.arr(S.str),
     weights: S.arr(S.obj({ seat: S.enum(...SEATS.map((s) => s.key)), weight: S.int, reason: S.str })),
     quick_seats: S.arr(S.enum(...SEATS.map((s) => s.key))),
-    guest_seats: S.arr(S.enum(...SEATS.filter((s) => s.group === "guest").map((s) => s.key))),
   });
   return ai.json({
     model: MODELS.chair, system: CHAIR_SYSTEM, schema, maxTokens: 3000,
@@ -205,7 +204,7 @@ Set up the room.
 - brief: under 200 words covering the business, resources, what success looks like, and the team's lean, using only what the team said and the vault notes given here. Do not invent facts.
 - assumptions: any number or fact you had to assume to make the brief usable, each one line. Keep it to what matters.
 - weights: one entry for every seat, weight 1 to 3 (3 = the decision lives in this pillar, 2 = materially affected, 1 = touched at the edges). Exactly one or two seats at 3. Reason in one line.
-- guest_seats: the two guest seats whose doctrine bears most on this decision (Hormozi for offers and pricing; Levinson when cash is scarce; Godin for launches and audience; Sharp for media, reach and availability; Ries & Trout for positioning, naming and new SKUs; Sutherland when the brief assumes a product or price change).\n- quick_seats: the four seats for a quick council: the two highest-weight seats, Sales or Promo as the contribution check (whichever is not already in), and the seat most likely to disagree with the others.`,
+- quick_seats: the four seats for a quick council: the two highest-weight seats, Sales or Promo as the contribution check (whichever is not already in), and the seat most likely to disagree with the others.`,
   });
 }
 
@@ -347,7 +346,7 @@ async function run(s) {
     weights: Object.fromEntries(SEATS.map((x) => [x.key, { weight: 1, reason: "" }])),
   });
   for (const w of setup.weights) st.weights[w.seat] = { weight: Math.max(1, Math.min(3, w.weight)), reason: w.reason };
-  st.seats = s.mode === "quick" ? [...new Set(setup.quick_seats)].slice(0, 4) : [...SEATS.filter((x) => x.group === "house").map((x) => x.key), ...[...new Set(setup.guest_seats || [])].slice(0, 2)];
+  st.seats = s.mode === "quick" ? [...new Set(setup.quick_seats)].slice(0, 4) : SEATS.map((x) => x.key);
   if (s.mode === "quick" && st.seats.length < 4) {
     for (const x of SEATS) if (st.seats.length < 4 && !st.seats.includes(x.key)) st.seats.push(x.key);
   }
